@@ -2,7 +2,7 @@
     "authors": [
         "/data/nica.json"
     ],
-    "pokedex": [
+    "dexes": [
         "/data/pokedex.json"
     ]
 }
