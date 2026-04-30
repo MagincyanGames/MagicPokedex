@@ -1,0 +1,37 @@
+{
+    "name": "Kanto",
+    "pokemons": [
+        {
+            "number": 11,
+            "name": "metapod"
+        },
+        {
+            "number": 43,
+            "name": "oddish"
+        },
+        {
+            "number": 55,
+            "name": "golduck"
+        },
+        {
+            "number": 71,
+            "name": "vaporeon"
+        },
+        {
+            "number": 98,
+            "name": "krabby"
+        },
+        {
+            "number": 115,
+            "name": "kangaskhan"
+        },
+        {
+            "number": 121,
+            "name": "starmie"
+        },
+        {
+            "number": 135,
+            "name": "jolteon"
+        }
+    ]
+}

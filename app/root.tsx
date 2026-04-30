@@ -30,10 +30,40 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(() => {
+  try {
+    const t = localStorage.getItem('theme');
+    if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  } catch (e) {}
+})()`,
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(() => {
+  try {
+    const el = document.getElementById('theme-toggle');
+    if (!el) return;
+    el.addEventListener('click', () => {
+      try {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      } catch (e) {}
+    });
+  } catch (e) {}
+})()`,
+          }}
+        />
         <Links />
       </head>
       <body>
-        {children}
+       {children}
         <ScrollRestoration />
         <Scripts />
       </body>

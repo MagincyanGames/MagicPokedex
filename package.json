@@ -3,6 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build && cp build/client/index.html build/client/404.html",
+    "deploy": "npm run predeploy && gh-pages -d build/client",
     "build": "react-router build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
@@ -18,11 +20,15 @@
   },
   "devDependencies": {
     "@react-router/dev": "7.14.0",
+    "@tailwindcss/postcss": "^4.2.4",
     "@tailwindcss/vite": "^4.2.2",
     "@types/node": "^22",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "tailwindcss": "^4.2.2",
+    "autoprefixer": "^10.5.0",
+    "gh-pages": "^6.3.0",
+    "postcss": "^8.5.12",
+    "tailwindcss": "^4.2.4",
     "typescript": "^5.9.3",
     "vite": "^8.0.3"
   }
