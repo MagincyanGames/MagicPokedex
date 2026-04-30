@@ -1,0 +1,12 @@
+{
+    "name": "Sukii",
+    "pokemons": {
+        "golduck": "/images/sukii/golduck.png",
+        "jolteon": "/images/sukii/jolteon.png",
+        "kangaskhan": "/images/sukii/kangaskhan.png",
+        "metapod": "/images/sukii/metapod.png",
+        "oddish": "/images/sukii/oddish.png",
+        "starmie": "/images/sukii/starmie.png",
+        "krabby": "/images/sukii/krabby.png"
+    }
+}

@@ -1,8 +1,9 @@
 {
     "authors": [
-        "/data/nica.json"
+        "/data/nica.json",
+        "/data/sukii.json"
     ],
     "dexes": [
-        "/data/pokedex.json"
+        "/data/g1.json"
     ]
 }
