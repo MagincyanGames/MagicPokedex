@@ -55,12 +55,12 @@ export default function PokemonView() {
     }, [authorParam, params.pokemon, formParam])
 
     return <div className="flex flex-col items-center justify-center min-h-screen p-4">
-        <div className="flex flex-col w-full max-w-4xl gap-6">
+        <div className="flex flex-col w-full max-w-400 gap-6">
             <div className="flex flex-col md:flex-row items-center md:items-start gap-8 bg-white p-8 rounded-2xl border shadow-lg">
                 <div className="flex-1">
                     <Title
                         title={capitalize(pokemon?.name ?? '')}
-                        className={authorParam ? 'hover:underline hover:cursor-pointer' : ''}
+                        className={authorParam ? 'hover:underline hover:cursor-pointer w-fit' : 'w-fit'}
                         onClick={() => {
                             if (authorParam) {
                                 navigate(`/pokemon/${pokemon?.name}`)
@@ -74,7 +74,7 @@ export default function PokemonView() {
                         </div>
                         <div>
                             <p className="text-xs uppercase tracking-widest text-gray-600 font-bold">Región</p>
-                            <p className="text-lg font-semibold text-red-600">{dexes[0] || 'Unknown'}</p>
+                            <p className="text-lg font-semibold text-red-600">{dexes[0] ? capitalize(dexes[0]) : 'Unknown'}</p>
                         </div>
                         {formParam && (
                             <div>
@@ -92,9 +92,9 @@ export default function PokemonView() {
                 </div>
 
                 {authorParam ? (
-                    <div className="flex-1 flex justify-center">
+                    <div className="flex-1 flex justify-center items-center">
                         <img
-                            className="h-64 object-contain border-4 border-red-600 rounded-lg"
+                            className="h-96 w-auto object-contain border-4 border-red-600 rounded-lg"
                             src={image}
                             alt={pokemon?.name}
                         />
