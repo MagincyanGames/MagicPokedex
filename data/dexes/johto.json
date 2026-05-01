@@ -3,23 +3,53 @@
     "pokemons": [
         {
             "number": 165,
-            "name": "ladyba"
+            "name": "ladyba",
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/165.png"
+        },
+        {
+            "number": 167,
+            "name": "spinarak",
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/spinarak.png"
         },
         {
             "number": 186,
-            "name": "politoed"
+            "name": "politoed",
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/186.png"
         },
         {
             "number": 188,
-            "name": "skiploom"
+            "name": "skiploom",
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/188.png"
         },
         {
             "number": 189,
-            "name": "jumpluff"
+            "name": "jumpluff",
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/189.png"
+        },
+        {
+            "number": 196,
+            "name": "espeon",
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/196.png"
+        },
+        {
+            "number": 224,
+            "name": "octillery",
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/224.png"
+        },
+        {
+            "number": 233,
+            "name": "porygon2",
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/233.png"
+        },
+        {
+            "number": 250,
+            "name": "ho-oh",
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/250.png"
         },
         {
             "number": 251,
-            "name": "celebi"
+            "name": "celebi",
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/251.png"
         }
     ]
 }
