@@ -1,9 +1,12 @@
 {
     "authors": [
         "/data/nica.json",
-        "/data/sukii.json"
+        "https://magincyangames.github.io/MagicPokedex/data/sukii.json"
     ],
     "dexes": [
-        "/data/g1.json"
+        "/data/dexes/kanto.json",
+        "/data/dexes/johto.json",
+        "/data/dexes/hoenn.json",
+        "/data/dexes/sinnoh.json"
     ]
 }

@@ -14,8 +14,16 @@
             "name": "golduck"
         },
         {
+            "number": 57,
+            "name": "primeape"
+        },
+        {
             "number": 71,
             "name": "vaporeon"
+        },
+        {
+            "number": 86,
+            "name": "seel"
         },
         {
             "number": 98,
@@ -32,6 +40,14 @@
         {
             "number": 135,
             "name": "jolteon"
+        },
+        {
+            "number": 138,
+            "name": "omanyte"
+        },
+        {
+            "number": 146,
+            "name": "moltres"
         }
     ]
 }

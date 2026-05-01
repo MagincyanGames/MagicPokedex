@@ -1,0 +1,29 @@
+{
+    "name": "hoenn",
+    "pokemons": [
+        {
+            "number": 252,
+            "name": "treecko"
+        },
+        {
+            "number": 269,
+            "name": "dustox"
+        },
+        {
+            "number": 322,
+            "name": "numel"
+        },
+        {
+            "number": 352,
+            "name": "kecleon"
+        },
+        {
+            "number": 357,
+            "name": "tropius"
+        },
+        {
+            "number": 367,
+            "name": "huntail"
+        }
+    ]
+}
