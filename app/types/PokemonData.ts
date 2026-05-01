@@ -24,7 +24,8 @@ export type ShowingPokemon = {
 export type Pokemon = {
     number: number,
     name: string
-    dex?: string
+    dex?: string,
+    forma?: string
 }
 
 export type Author = {
@@ -99,7 +100,7 @@ function setCachedCollections(authors: Author[], dexes: Pokedex[], expireSeconds
     }
 }
 
-async function getCollections(expireSeconds: number = 0): Promise<ComplexCollection> {
+async function getCollections(expireSeconds: number = 60): Promise<ComplexCollection> {
     console.log('[COLLECTIONS] Getting collections...')
 
     // Intentar obtener del caché

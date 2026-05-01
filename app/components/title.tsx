@@ -2,9 +2,10 @@ type TitleProps = {
     title: string,
     className?: string;
     centered?: boolean;
+    onClick?: () => void;
 }
 
-export default function Title({ title, className = "", centered = false }: TitleProps) {
+export default function Title({ title, onClick, className = "", centered = false }: TitleProps) {
     // Detectar si className contiene estilos específicos
     const hasFontSize = /text-\w+/.test(className);
     const hasWeight = /font-\w+/.test(className);
@@ -17,7 +18,7 @@ export default function Title({ title, className = "", centered = false }: Title
     const colorClasses = !hasColor ? "text-gray-900" : "";
     const trackingClasses = !hasTracking ? "tracking-tight" : "";
 
-    return <h1 className={`${baseClasses} ${fontSizeClasses} ${weightClasses} ${colorClasses} ${trackingClasses} ${className}`.trim()}>
+    return <h1 className={`${baseClasses} ${fontSizeClasses} ${weightClasses} ${colorClasses} ${trackingClasses} ${className}`.trim()} onClick={onClick}>
         {title}
     </h1>
 }

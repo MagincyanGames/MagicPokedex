@@ -67,7 +67,7 @@ export default function Dex() {
                   navigate(`/dex?author=${encodeURIComponent(e.target.value)}`);
                 }
               }}
-              className="px-4 py-2 border border-gray-300 rounded-lg text-lg font-semibold hover:cursor-pointer"
+              className="px-4 py-2 border border-gray-300 rounded-lg text-lg font-semibold hover:cursor-pointer text-black bg-white appearance-none"
             >
               <option value="">Ninguno</option>
               {authors?.map(author => (
