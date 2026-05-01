@@ -1,6 +1,23 @@
 {
     "name": "Nica",
     "pokemons": {
-        "vaporeon": "/images/nica/vaporeon.png"
+        "primeape": "/images/nica/primeape.png",
+        "vaporeon": "/images/nica/vaporeon.png",
+        "seel": "/images/nica/seel.png",
+        "omanyte": "/images/nica/omanyte.png",
+        "moltres": "/images/nica/moltres.png",
+        "ladyba": "/images/nica/ladyba.png",
+        "politoed": "/images/nica/politoed.png",
+        "skiploom": "/images/nica/skiploom.png",
+        "celebi": "/images/nica/celebi.png",
+        "jumpluff": "/images/nica/jumpluff.png",
+        "treecko": "/images/nica/treecko.png",
+        "dustox": "/images/nica/dustox.png",
+        "numel": "/images/nica/numel.png",
+        "kecleon": "/images/nica/kecleon.png",
+        "tropius": "/images/nica/tropius.png",
+        "huntail": "/images/nica/huntail.png",
+        "shinx": "/images/nica/shinx.png",
+        "floatzel": "/images/nica/floatzel.png"
     }
 }

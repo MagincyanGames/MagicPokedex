@@ -1,0 +1,25 @@
+{
+    "name": "johto",
+    "pokemons": [
+        {
+            "number": 165,
+            "name": "ladyba"
+        },
+        {
+            "number": 186,
+            "name": "politoed"
+        },
+        {
+            "number": 188,
+            "name": "skiploom"
+        },
+        {
+            "number": 189,
+            "name": "jumpluff"
+        },
+        {
+            "number": 251,
+            "name": "celebi"
+        }
+    ]
+}
