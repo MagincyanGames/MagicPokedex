@@ -1,7 +1,8 @@
 {
     "authors": [
         "/data/nica.json",
-        "/data/sukii.json"
+        "/data/sukii.json",
+        "https://raw.githubusercontent.com/Yabarta/Pokedex-magic-explotation-laburo/refs/heads/main/pokedex.json"
     ],
     "dexes": [
         "/data/dexes/kanto.json",

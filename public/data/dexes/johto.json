@@ -9,7 +9,12 @@
         {
             "number": 167,
             "name": "spinarak",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/spinarak.png"
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/167.png"
+        },
+        {
+            "number": 183,
+            "name": "marill",
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/183.png"
         },
         {
             "number": 186,

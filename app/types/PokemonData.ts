@@ -101,7 +101,7 @@ function setCachedCollections(authors: Author[], dexes: Pokedex[], expireSeconds
     }
 }
 
-async function getCollections(expireSeconds: number = 1): Promise<ComplexCollection> {
+async function getCollections(expireSeconds: number = 60): Promise<ComplexCollection> {
     console.log('[COLLECTIONS] Getting collections...')
 
     // Intentar obtener del caché
