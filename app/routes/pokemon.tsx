@@ -57,21 +57,17 @@ export default function PokemonView() {
       if (authorParam) {
         const author = await Collections.getAuthor(authorParam, col)
 
-        setImage(Link(Collections.getLinkPokemonEntry(pokemonName, formParam, author)))
+        setImage(Link(Collections.getSprite(pokemon, formParam, author)))
       } else {
         // Si no hay autor, mostrar dibujos de todos los autores que lo tengan
 
-        if (!pokemon.forms)
-          setImage(Link(pokemon.sprite ?? ''))
-        else if (!form)
-          setImage(Link(pokemon.sprite ?? ''))
-        else setImage(Link(form.sprite ?? ''))
+        setImage(Link(Collections.getSprite(pokemon, formParam, null)))
 
         const authorsWithThisPokemon = col.authors
           .filter(author => pokemonName in author.pokemons)
           .map(author => ({
             author,
-            image: Link(Collections.getLinkPokemonEntry(pokemonName, formParam, author))
+            image: Link(Collections.getSprite(pokemon, formParam, author))
           }))
         setAuthorsWithPokemon(authorsWithThisPokemon)
       }

@@ -42,7 +42,7 @@ export default function Dex() {
     setShowingPokemons(pokemons?.filter(p => (!selectedAuthor || p.name in selectedAuthor.pokemons) && (!regionParam || p.dex?.toLocaleLowerCase() === regionParam.toLocaleLowerCase())).map(
       p => {
         return {
-          link: selectedAuthor ? Link(selectedAuthor.pokemons[p.name]) : p.sprite,
+          link: Link(Collections.getSprite(p, null, selectedAuthor)),
           pokemon: p,
         }
       }
