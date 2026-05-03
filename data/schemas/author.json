@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/Author",
+  "definitions": {
+    "Author": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "pokemons": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/PokemonAuthorEntry"
+          }
+        },
+        "$schema": {
+          "type": "string",
+          "description": "JSON Schema reference"
+        }
+      },
+      "required": [
+        "name",
+        "pokemons"
+      ],
+      "additionalProperties": false
+    },
+    "PokemonAuthorEntry": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "base": {
+              "type": "string"
+            },
+            "forms": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "base"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    }
+  }
+}

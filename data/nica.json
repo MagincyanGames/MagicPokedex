@@ -1,4 +1,5 @@
 {
+    "$schema": "schemas/author.json",
     "name": "Nica",
     "pokemons": {
         "primeape": "/images/nica/primeape.png",

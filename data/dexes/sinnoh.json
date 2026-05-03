@@ -1,60 +1,61 @@
 {
+    "$schema": "../schemas/pokedex.json",
     "name": "sinnoh",
     "pokemons": [
         {
             "number": 398,
             "name": "staraptor",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/398.png"
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/398.png"
         },
         {
             "number": 403,
             "name": "shinx",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/403.png"
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/403.png"
         },
         {
             "number": 419,
             "name": "floatzel",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/419.png"
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/419.png"
         },
         {
             "number": 420,
             "name": "cherubi",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/420.png"
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/420.png"
         },
         {
             "number": 422,
             "name": "shellos",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/422.png"
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/422.png"
         },
         {
             "number": 425,
             "name": "drifloon",
-            "sprite":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/425.png"
+            "sprite":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/425.png"
         },
         {
             "number": 431,
             "name": "glameow",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/431.png"
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/431.png"
         },
         {
             "number": 434,
             "name": "stunky",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/434.png"
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/434.png"
         },
         {
             "number": 462,
             "name": "magnezone",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/462.png"
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/462.png"
         },
         {
             "number": 464,
             "name":"rhyperior",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/464.png"
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/464.png"
         },
         {
             "number": 488,
             "name": "cresselia",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/488.png"
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/488.png"
         }
     ]
 }

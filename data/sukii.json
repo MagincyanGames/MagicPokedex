@@ -1,4 +1,5 @@
 {
+    "$schema": "schemas/author.json",
     "name": "Sukii",
     "pokemons": {
         "golduck": "/images/sukii/golduck.png",

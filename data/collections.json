@@ -1,4 +1,5 @@
 {
+    "$schema": "schemas/collection.json",
     "authors": [
         "/data/nica.json",
         "/data/sukii.json",
