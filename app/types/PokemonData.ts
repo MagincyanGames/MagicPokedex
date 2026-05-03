@@ -1,5 +1,7 @@
 import { FetchLink } from "./Link"
 
+const CACHE_EXPIRE_SECONDS = import.meta.env.MODE === 'development' ? 1 : 100
+
 export type Collection = {
     authors: string[],
     dexes: string[],
@@ -25,7 +27,13 @@ export type Pokemon = {
     number: number
     name: string
     dex?: string
-    forma?: string
+    sprite?: string
+    
+    forms?: Record<string, PokemonForm>
+}
+
+export type PokemonForm = {
+    name: string
     sprite?: string
 }
 
@@ -101,7 +109,7 @@ function setCachedCollections(authors: Author[], dexes: Pokedex[], expireSeconds
     }
 }
 
-async function getCollections(expireSeconds: number = 60): Promise<ComplexCollection> {
+async function getCollections(): Promise<ComplexCollection> {
     console.log('[COLLECTIONS] Getting collections...')
 
     // Intentar obtener del caché
@@ -134,7 +142,7 @@ async function getCollections(expireSeconds: number = 60): Promise<ComplexCollec
         const dexes = (await Promise.all(dexFetches.map(p => p.json()))).map(p => p as Pokedex)
 
         // Guardar en caché
-        setCachedCollections(authors, dexes, expireSeconds)
+        setCachedCollections(authors, dexes, CACHE_EXPIRE_SECONDS)
 
         const pokemons = getPokemonList(dexes)
 
