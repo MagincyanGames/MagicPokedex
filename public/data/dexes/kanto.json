@@ -38,11 +38,6 @@
             "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/61.png"
         },
         {
-            "number": 71,
-            "name": "vaporeon",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/71.png"
-        },
-        {
             "number": 73,
             "name": "tentacruel",
             "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/73.png"
@@ -76,6 +71,11 @@
             "number": 131,
             "name": "lapras",
             "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/131.png"
+        },
+        {
+            "number": 134,
+            "name": "vaporeon",
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/134.png"
         },
         {
             "number": 135,
