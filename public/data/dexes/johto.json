@@ -1,60 +1,61 @@
 {
+    "$schema": "../schemas/pokedex.json",
     "name": "johto",
     "pokemons": [
         {
             "number": 165,
             "name": "ladyba",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/165.png"
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/165.png"
         },
         {
             "number": 167,
             "name": "spinarak",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/167.png"
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/167.png"
         },
         {
             "number": 183,
             "name": "marill",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/183.png"
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/183.png"
         },
         {
             "number": 186,
             "name": "politoed",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/186.png"
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/186.png"
         },
         {
             "number": 188,
             "name": "skiploom",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/188.png"
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/188.png"
         },
         {
             "number": 189,
             "name": "jumpluff",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/189.png"
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/189.png"
         },
         {
             "number": 196,
             "name": "espeon",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/196.png"
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/196.png"
         },
         {
             "number": 224,
             "name": "octillery",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/224.png"
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/224.png"
         },
         {
             "number": 233,
             "name": "porygon2",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/233.png"
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/233.png"
         },
         {
             "number": 250,
             "name": "ho-oh",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/250.png"
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/250.png"
         },
         {
             "number": 251,
             "name": "celebi",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/251.png"
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/251.png"
         }
     ]
 }

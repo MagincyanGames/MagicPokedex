@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/Pokedex",
+  "definitions": {
+    "Pokedex": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "pokemons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Pokemon"
+          }
+        },
+        "$schema": {
+          "type": "string",
+          "description": "JSON Schema reference"
+        }
+      },
+      "required": [
+        "name",
+        "pokemons"
+      ],
+      "additionalProperties": false
+    },
+    "Pokemon": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "number"
+        },
+        "name": {
+          "type": "string"
+        },
+        "dex": {
+          "type": "string"
+        },
+        "sprite": {
+          "type": "string"
+        },
+        "forms": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/PokemonForm"
+          }
+        }
+      },
+      "required": [
+        "number",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "PokemonForm": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "sprite": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    }
+  }
+}

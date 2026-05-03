@@ -18,8 +18,15 @@ export default function PokemonView() {
   const [dexes, setDexes] = useState<string[]>([])
   const [image, setImage] = useState<string>()
   const [authorsWithPokemon, setAuthorsWithPokemon] = useState<Array<{ author: Author, image: string }>>([])
+  const [isSmallImage, setIsSmallImage] = useState(false)
 
   const navigate = useNavigate()
+
+  const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = e.currentTarget
+    console.log(img.naturalWidth)
+    setIsSmallImage(img.naturalWidth <= 250 || img.naturalHeight <= 250)
+  }
 
   useEffect(() => {
     async function load() {
@@ -33,7 +40,8 @@ export default function PokemonView() {
 
       console.log(formParam)
       console.log(pokemon.forms ? pokemon.forms[formParam ?? ''] : '')
-      setForm(formParam && pokemon.forms ? pokemon.forms[formParam] : undefined)
+      const form = formParam && pokemon.forms ? pokemon.forms[formParam] : undefined
+      setForm(form)
 
       // Obtener el dex donde aparece este pokemon (solo la primera región)
       const pokemonList = Collections.getPokemonList(col.dexes)
@@ -43,18 +51,27 @@ export default function PokemonView() {
       if (pokemonFirstDex) setDexes([pokemonFirstDex])
 
       // Construir la clave para buscar en author.pokemons considerando la forma
-      const pokemonKey = formParam ? `${pokemonName}#${formParam}` : pokemonName
+
+      //TODO Comprobar que el FORM exista
 
       if (authorParam) {
         const author = await Collections.getAuthor(authorParam, col)
-        setImage(Link(author.pokemons[pokemonKey]))
+
+        setImage(Link(Collections.getLinkPokemonEntry(pokemonName, formParam, author)))
       } else {
         // Si no hay autor, mostrar dibujos de todos los autores que lo tengan
+
+        if (!pokemon.forms)
+          setImage(Link(pokemon.sprite ?? ''))
+        else if (!form)
+          setImage(Link(pokemon.sprite ?? ''))
+        else setImage(Link(form.sprite ?? ''))
+
         const authorsWithThisPokemon = col.authors
-          .filter(author => pokemonKey in author.pokemons)
+          .filter(author => pokemonName in author.pokemons)
           .map(author => ({
             author,
-            image: Link(author.pokemons[pokemonKey])
+            image: Link(Collections.getLinkPokemonEntry(pokemonName, formParam, author))
           }))
         setAuthorsWithPokemon(authorsWithThisPokemon)
       }
@@ -65,7 +82,7 @@ export default function PokemonView() {
 
   return <div className="flex flex-col items-center justify-center min-h-screen p-4">
     <div className="flex flex-col w-full max-w-400 gap-6">
-      <div className="flex flex-col md:flex-row items-center md:items-start gap-8 bg-white p-8 rounded-2xl border shadow-lg">
+      <div className="flex flex-col md:flex-row items-center md:items-start gap-8 bg-white p-8 rounded-2xl border shadow-lg relative">
         <div className="flex-1">
           <div className="flex flex-row gap-4 w-fit justify-center">
             <Title
@@ -73,12 +90,15 @@ export default function PokemonView() {
               className={authorParam ? 'hover:underline hover:cursor-pointer w-fit' : 'w-fit'}
               onClick={() => {
                 if (authorParam) {
-                  navigate(`/pokemon/${pokemon?.name}`)
+                  navigate(`/pokemon/${pokemon?.name}${BuildQuery({
+                    form: formParam
+                  })}`)
                 }
               }}
             />
             {pokemon?.forms && <div className="w-fit">
               <Selector
+                nullOption="Base"
                 value={formParam}
                 options={Object.entries(pokemon.forms).map(f => {
                   return {
@@ -100,7 +120,7 @@ export default function PokemonView() {
             </div>
             <div>
               <p className="text-xs uppercase tracking-widest text-gray-600 font-bold">Región</p>
-              <p className="text-lg font-semibold text-red-600">{dexes[0] ? capitalize(dexes[0]) : 'Unknown'}</p>
+              <p className="text-lg font-semibold text-red-600 hover:cursor-pointer hover:underline w-fit" onClick={() => navigate(`/dex?region=${dexes[0]}`)}>{dexes[0] ? capitalize(dexes[0]) : 'Unknown'}</p>
             </div>
             {authorParam && (
               <div>
@@ -111,21 +131,31 @@ export default function PokemonView() {
           </div>
         </div>
 
-        {authorParam ? (
+        {image ? (
           <div className="flex-1 flex justify-center items-center">
             <img
               className="h-96 w-auto object-contain border-4 border-red-600 rounded-lg"
+              style={{ imageRendering: isSmallImage ? 'pixelated' : 'auto' }}
               src={image}
               alt={pokemon?.name}
+              onLoad={handleImageLoad}
             />
           </div>
         ) : null}
+
+        <button
+          onClick={() => navigate('/dex')}
+          className="absolute bottom-4 left-4 bg-red-600 hover:bg-red-700 text-white rounded-2xl shadow-lg transition-colors text-2xl h-10 w-10 flex items-center justify-center hover:cursor-pointer"
+          aria-label="Back to Dex"
+        >
+          ←
+        </button>
       </div>
 
       {!authorParam && authorsWithPokemon.length > 0 && (
         <div className="bg-red-700 p-8 rounded-2xl">
           <h2 className="text-white text-xl font-bold mb-6">Versiones de Artistas</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-8">
             {authorsWithPokemon.map(({ author, image }) => (
               <div
                 key={author.name}
@@ -138,7 +168,7 @@ export default function PokemonView() {
                 }}
               >
                 <img
-                  className="h-32 w-32 border-2 border-white rounded-lg object-cover hover:border-yellow-300 transition-colors"
+                  className="h-32 w-32 border-2 border-white rounded-lg object-cover hover:brightness-75 transition-all cursor-pointer"
                   src={image}
                   alt={`${pokemon?.name} by ${author.name}`}
                 />
@@ -149,5 +179,6 @@ export default function PokemonView() {
         </div>
       )}
     </div>
+
   </div>
 }
