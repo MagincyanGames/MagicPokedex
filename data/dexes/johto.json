@@ -4,58 +4,47 @@
     "pokemons": [
         {
             "number": 165,
-            "name": "ladyba",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/165.png"
+            "name": "ladyba"
         },
         {
             "number": 167,
-            "name": "spinarak",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/167.png"
+            "name": "spinarak"
         },
         {
             "number": 183,
-            "name": "marill",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/183.png"
+            "name": "marill"
         },
         {
             "number": 186,
-            "name": "politoed",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/186.png"
+            "name": "politoed"
         },
         {
             "number": 188,
-            "name": "skiploom",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/188.png"
+            "name": "skiploom"
         },
         {
             "number": 189,
-            "name": "jumpluff",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/189.png"
+            "name": "jumpluff"
         },
         {
             "number": 196,
-            "name": "espeon",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/196.png"
+            "name": "espeon"
         },
         {
             "number": 224,
-            "name": "octillery",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/224.png"
+            "name": "octillery"
         },
         {
             "number": 233,
-            "name": "porygon2",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/233.png"
+            "name": "porygon2"
         },
         {
             "number": 250,
-            "name": "ho-oh",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/250.png"
+            "name": "ho-oh"
         },
         {
             "number": 251,
-            "name": "celebi",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/251.png"
+            "name": "celebi"
         }
     ]
 }

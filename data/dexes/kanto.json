@@ -3,94 +3,80 @@
     "name": "kanto",
     "pokemons": [
         {
+            "number": 1,
+            "name": "bulbasaur"
+        },
+        {
             "number": 2,
-            "name": "ivysaur",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png"
+            "name": "ivysaur"
         },
         {
             "number": 11,
-            "name": "metapod",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png"
+            "name": "metapod"
         },
         {
             "number": 43,
-            "name": "oddish",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/43.png"
+            "name": "oddish"
         },
         {
             "number": 47,
-            "name": "parasect",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/47.png"
+            "name": "parasect"
         },
         {
             "number": 55,
-            "name": "golduck",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/55.png"
+            "name": "golduck"
         },
         {
             "number": 57,
-            "name": "primeape",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/57.png"
+            "name": "primeape"
         },
         {
             "number": 61,
-            "name": "poliwhirl",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/61.png"
+            "name": "poliwhirl"
         },
         {
             "number": 73,
-            "name": "tentacruel",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/73.png"
+            "name": "tentacruel"
         },
         {
             "number": 85,
-            "name": "dodrio",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/85.png"
+            "name": "dodrio"
         },
         {
             "number": 86,
-            "name": "seel",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/86.png"
+            "name": "seel"
         },
         {
             "number": 98,
-            "name": "krabby",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/98.png"
+            "name": "krabby"
         },
         {
             "number": 115,
-            "name": "kangaskhan",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/115.png"
+            "name": "kangaskhan"
         },
         {
             "number": 121,
-            "name": "starmie",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/121.png"
+            "name": "starmie"
         },
         {
             "number": 131,
-            "name": "lapras",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/131.png"
+            "name": "lapras"
         },
         {
             "number": 134,
-            "name": "vaporeon",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/134.png"
+            "name": "vaporeon"
         },
         {
             "number": 135,
-            "name": "jolteon",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png"
+            "name": "jolteon"
         },
         {
             "number": 138,
-            "name": "omanyte",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/138.png"
+            "name": "omanyte"
         },
         {
             "number": 146,
-            "name": "moltres",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png"
+            "name": "moltres"
         }
     ]
 }
