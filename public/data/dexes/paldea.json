@@ -1,0 +1,54 @@
+{
+    "$schema": "../schemas/pokedex.json",
+    "name": "paldea",
+    "pokemons": [
+        {
+            "number": 916,
+            "name": "oinkologne",
+            "forms": {
+                "hembra": {
+                    "name": "Hembra",
+                    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10254.png"
+                }
+            }
+        },
+        {
+            "number": 925,
+            "name": "maushold"
+        },
+        {
+            "number": 959,
+            "name": "tinkaton"
+        },
+        {
+            "number": 965,
+            "name": "varoom"
+        },
+        {
+            "number": 982,
+            "name": "dudunsparce"
+        },
+        {
+            "number": 991,
+            "name": "iron-bundle"
+        },
+        {
+            "number": 998,
+            "name": "baxcalibur",
+            "forms": {
+                "mega": {
+                    "name": "Mega",
+                    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10325.png"
+                }
+            }
+        },
+        {
+            "number": 1002,
+            "name": "chien-pao"
+        },
+        {
+            "number": 1011,
+            "name": "dipplin"
+        }
+    ]
+}

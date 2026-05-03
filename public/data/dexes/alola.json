@@ -1,0 +1,46 @@
+{
+    "$schema": "../schemas/pokedex.json",
+    "name": "alola",
+    "pokemons": [
+        {
+            "number": 725,
+            "name": "litten"
+        },
+        {
+            "number": 729,
+            "name": "brionne"
+        },
+        {
+            "number": 744,
+            "name": "rockruff"
+        },
+        {
+            "number": 747,
+            "name": "mareanie"
+        },
+        {
+            "number": 760,
+            "name": "bewear"
+        },
+        {
+            "number": 761,
+            "name": "bounsweet"
+        },
+        {
+            "number": 766,
+            "name": "passimian"
+        },
+        {
+            "number": 770,
+            "name": "palossand"
+        },
+        {
+            "number": 789,
+            "name": "cosmog"
+        },
+        {
+            "number": 794,
+            "name": "buzzwole"
+        }
+    ]
+}

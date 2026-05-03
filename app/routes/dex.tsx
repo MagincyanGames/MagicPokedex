@@ -39,11 +39,24 @@ export default function Dex() {
   }, []);
 
   useEffect(() => {
-    setShowingPokemons(pokemons?.filter(p => (!selectedAuthor || p.name in selectedAuthor.pokemons) && (!regionParam || p.dex?.toLocaleLowerCase() === regionParam.toLocaleLowerCase())).map(
+
+    const unformPokemonList = selectedAuthor ? new Set(Object.entries(selectedAuthor.pokemons).map(p =>
+      p[0].split('#')[0]
+    )) : null
+
+    setShowingPokemons(pokemons?.filter(p => (!unformPokemonList || unformPokemonList.has(p.name)) && (!regionParam || p.dex?.toLocaleLowerCase() === regionParam.toLocaleLowerCase())).map(
       p => {
+        let form: string | undefined = undefined
+
+        if (selectedAuthor && !(p.name in selectedAuthor.pokemons) && p.forms) {
+          const keys = Object.keys(p.forms!).map(k => p.name + '#' + k)
+          form = Object.keys(selectedAuthor.pokemons).find(p => keys.includes(p))?.split('#')[1]
+        }
+
         return {
-          link: Link(Collections.getSprite(p, null, selectedAuthor)),
+          link: Link(Collections.getSprite(p, form, selectedAuthor)),
           pokemon: p,
+          form
         }
       }
     ))
@@ -82,7 +95,7 @@ export default function Dex() {
                 <div
                   key={p.pokemon.number}
                   className="flex flex-col items-center gap-2 cursor-pointer"
-                  onClick={() => navigate(`/pokemon/${p.pokemon.name}${BuildQuery({ author: authorParam })}`)}
+                  onClick={() => navigate(`/pokemon/${p.pokemon.name}${BuildQuery({ author: authorParam, form: p.form })}`)}
                 >
                   <div
                     style={{

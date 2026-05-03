@@ -19,8 +19,9 @@ export type Pokedex = {
 }
 
 export type ShowingPokemon = {
-    link?: string,
+    link?: string
     pokemon: Pokemon
+    form?: string
 }
 
 export type Pokemon = {
@@ -29,6 +30,8 @@ export type Pokemon = {
     dex?: string
     sprite?: string
 
+    //TODO: agregar Display Name
+    //TODO: Renombrado de forma base 
     forms?: Record<string, PokemonForm>
 }
 
@@ -59,6 +62,7 @@ export type CachedData = {
 function getSprite(pokemon: Pokemon, form?: string | undefined | null, author?: Author | undefined | null): string {
 
     const key = pokemon.name + (form ? "#" + form : '')
+    console.log(key)
 
     if (!author) {
         if (!form)
@@ -69,11 +73,15 @@ function getSprite(pokemon: Pokemon, form?: string | undefined | null, author?: 
 
     const pae = author.pokemons[pokemon.name]
 
-    if (!form)
-        return typeof pae === 'string' ? pae : pae.base
-
     if (form && key in author.pokemons)
         return author.pokemons[key] as string //* Para este formato el contenido debe ser un string
+
+    if (!pae) {
+        return pokemon.sprite ?? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.number}.png`
+    }
+
+    if (!form)
+        return typeof pae === 'string' ? pae : pae.base
 
     console.log("pokemons" + JSON.stringify(author.pokemons))
 

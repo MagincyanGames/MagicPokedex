@@ -1,0 +1,68 @@
+{
+    "$schema": "../schemas/pokedex.json",
+    "name": "teselia",
+    "pokemons": [
+        {
+            "number": 502,
+            "name": "dewott"
+        },
+        {
+            "number": 521,
+            "name": "unfezant",
+            "forms": {
+                "hembra": {
+                    "name": "Hembra",
+                    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/female/521.png"
+                }
+            }
+        },
+        {
+            "number": 505,
+            "name": "watchog"
+        },
+        {
+            "number": 514,
+            "name": "simisear"
+        },
+        {
+            "number": 524,
+            "name": "roggenrola"
+        },
+        {
+            "number": 538,
+            "name": "throh"
+        },
+        {
+            "number": 555,
+            "name": "darmanitan"
+        },
+        {
+            "number": 596,
+            "name": "galvantula"
+        },
+        {
+            "number": 598,
+            "name": "ferrothorn"
+        },
+        {
+            "number": 603,
+            "name": "eelektrik"
+        },
+        {
+            "number": 605,
+            "name": "elgyem"
+        },
+        {
+            "number": 626,
+            "name": "bouffalant"
+        },
+        {
+            "number": 627,
+            "name": "rufflet"
+        },
+        {
+           "number": 637, 
+           "name": "volcarona"
+        }
+    ]
+}

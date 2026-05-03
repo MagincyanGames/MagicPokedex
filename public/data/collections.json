@@ -10,6 +10,11 @@
         "/data/dexes/kanto.json",
         "/data/dexes/johto.json",
         "/data/dexes/hoenn.json",
-        "/data/dexes/sinnoh.json"
+        "/data/dexes/sinnoh.json",
+        "/data/dexes/teselia.json",
+        "/data/dexes/kalos.json",
+        "/data/dexes/alola.json",
+        "/data/dexes/galar.json",
+        "/data/dexes/paldea.json"
     ]
 }

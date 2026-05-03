@@ -64,7 +64,7 @@ export default function PokemonView() {
         setImage(Link(Collections.getSprite(pokemon, formParam, null)))
 
         const authorsWithThisPokemon = col.authors
-          .filter(author => pokemonName in author.pokemons)
+          .filter(author => pokemonName in author.pokemons || pokemonName + "#" + formParam in author.pokemons)
           .map(author => ({
             author,
             image: Link(Collections.getSprite(pokemon, formParam, author))

@@ -39,8 +39,21 @@
         },
         {
             "number": 434,
-            "name": "stunky",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/434.png"
+            "name": "stunky"
+        },
+        {
+            "number": 448,
+            "name": "lucario",
+            "forms": {
+                "mega-z": {
+                    "name": "Mega Z",
+                    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10310.png"
+                }
+            }
+        },
+        {
+            "number": 457,
+            "name": "lumineon"
         },
         {
             "number": 462,
@@ -51,6 +64,16 @@
             "number": 464,
             "name":"rhyperior",
             "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/464.png"
+        },
+        {
+            "number": 479,
+            "name": "rotom", 
+            "forms": {
+                "fan": {
+                    "name": "ventilador",
+                    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10011.png"
+                }
+            }
         },
         {
             "number": 488,

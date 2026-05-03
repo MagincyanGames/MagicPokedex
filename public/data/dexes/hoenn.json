@@ -4,88 +4,71 @@
     "pokemons": [
         {
             "number": 252,
-            "name": "treecko",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/252.png"
+            "name": "treecko"
         },
         {
             "number": 258,
-            "name": "mudkip",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/258.png"
+            "name": "mudkip"
         },
         {
             "number": 259,
-            "name": "marshtomp",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/259.png"
+            "name": "marshtomp"
         },
         {
             "number": 269,
-            "name": "dustox",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/269.png"
+            "name": "dustox"
         },
         {
             "number": 286,
-            "name": "breloom",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/286.png"
+            "name": "breloom"
         },
         {
             "number": 300,
-            "name": "skitty",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/300.png"
+            "name": "skitty"
         },
         {
             "number": 316,
-            "name": "gulpin",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/316.png"
+            "name": "gulpin"
         },
         {
             "number": 318,
-            "name": "carvanha",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/318.png"
+            "name": "carvanha"
         },
         {
             "number": 322,
-            "name": "numel",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/322.png"
+            "name": "numel"
         },
         {
             "number": 323,
-            "name": "camerupt",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/323.png"
+            "name": "camerupt"
         },
         {
             "number": 326,
-            "name": "grumpig",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/326.png"
+            "name": "grumpig"
         },
         {
             "number": 328,
-            "name": "trapinch",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/328.png"
+            "name": "trapinch"
         },
         {
             "number": 334,
-            "name": "altaria",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/334.png"
+            "name": "altaria"
         },
         {
             "number": 352,
-            "name": "kecleon",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/352.png"
+            "name": "kecleon"
         },
         {
             "number": 357,
-            "name": "tropius",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/357.png"
+            "name": "tropius"
         },
         {
             "number": 367,
-            "name": "huntail",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/367.png"
+            "name": "huntail"
         },
         {
             "number": 376,
-            "name": "metagross",
-            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/376.png"
+            "name": "metagross"
         }
     ]
 }

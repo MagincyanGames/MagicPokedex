@@ -1,0 +1,24 @@
+{
+    "$schema": "../schemas/pokedex.json",
+    "name": "kalos",
+    "pokemons": [
+        {
+            "number": 680,
+            "name": "doublade"
+        },
+        {
+            "number": 703,
+            "name": "carbink"
+        },
+        {
+            "number": 713,
+            "name": "avalugg",
+            "forms": {
+                "hisui": {
+                    "name": "Hisui",
+                    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10243.png"
+                }
+            }
+        }
+    ]
+}
