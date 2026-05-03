@@ -3,6 +3,10 @@
     "name": "kanto",
     "pokemons": [
         {
+            "number": 1,
+            "name": "bulbasaur"
+        },
+        {
             "number": 2,
             "name": "ivysaur"
         },

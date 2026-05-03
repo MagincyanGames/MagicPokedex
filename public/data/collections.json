@@ -3,7 +3,8 @@
     "authors": [
         "/data/nica.json",
         "/data/sukii.json",
-        "https://raw.githubusercontent.com/Yabarta/Pokedex-magic-explotation-laburo/refs/heads/main/pokedex.json"
+        "https://raw.githubusercontent.com/Yabarta/Pokedex-magic-explotation-laburo/refs/heads/main/pokedex.json",
+        "https://raw.githubusercontent.com/Mtolgon/pokemagic/refs/heads/main/mamahuevo.json"
     ],
     "dexes": [
         "/data/dexes/kanto.json",
