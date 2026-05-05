@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router";
-import Selector from "~/components/selector";
-import { Link } from "~/types/Link";
-import { Collections, type Author, type Pokedex, type Pokemon, type PokemonAuthorEntryBody, type ShowingPokemon } from "~/types/PokemonData";
-import { capitalize } from "~/utiles/format";
-import { BuildQuery } from "~/utiles/query";
+import Selector from "~/components/selector.js";
+import { Link } from "~/types/Link.js";
+import { Collections, type Author, type Pokedex, type Pokemon, type PokemonAuthorEntryBody, type ShowingPokemon } from "~/types/PokemonData.js";
+import { capitalize } from "~/utiles/format.js";
+import { BuildQuery } from "~/utiles/query.js";
 
 export default function Dex() {
   const [pokemons, setPokemons] = useState<Pokemon[]>();
@@ -114,7 +114,7 @@ export default function Dex() {
                     title={p.pokemon.name}
                     className="hover:brightness-75 transition-all duration-200"
                   />
-                  <p className="text-white text-sm font-semibold text-center">{p.pokemon.name}</p>
+                  <p className="text-white text-sm font-semibold text-center">{p.pokemon.display ?? p.pokemon.name}</p>
                 </div>
               );
             })}

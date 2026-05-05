@@ -2,10 +2,10 @@ import { FetchLink } from "./Link"
 
 let CACHE_EXPIRE_SECONDS = 100
 try {
-  CACHE_EXPIRE_SECONDS = import.meta.env.MODE === 'development' ? 1 : 100
+    CACHE_EXPIRE_SECONDS = import.meta.env.MODE === 'development' ? 1 : 100
 } catch (e) {
-  // import.meta.env no disponible en Node.js (para scripts)
-  CACHE_EXPIRE_SECONDS = 100
+    // import.meta.env no disponible en Node.js (para scripts)
+    CACHE_EXPIRE_SECONDS = 100
 }
 
 export type Collection = {
@@ -37,6 +37,7 @@ export type Pokemon = {
     sprite?: string
 
     //TODO: agregar Display Name
+    display: string
     //TODO: Renombrado de forma base 
     forms?: Record<string, PokemonForm>
 }

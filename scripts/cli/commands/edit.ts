@@ -27,15 +27,6 @@ export async function editPokemon(dexName?: string, pokemonIdentifier?: string) 
 
         const sortedDexes = dexesWithGen.map((d) => d.name)
 
-        // Show available regions/dexes (only if needed to select)
-        if (!dexName) {
-            console.log('\n[INFO] Available regions:')
-            sortedDexes.forEach((dex, index) => {
-                console.log(`  ${index + 1}. ${dex}`)
-            })
-            console.log('')
-        }
-
         // 1. Get dex
         let selectedDex = dexName
         if (selectedDex && !sortedDexes.includes(selectedDex)) {

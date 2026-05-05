@@ -72,7 +72,7 @@
             "name": "metagross",
             "forms": {
                 "mega": {
-                    "name": "mega",
+                    "name": "Mega",
                     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10076.png"
                 }
             }

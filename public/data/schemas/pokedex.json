@@ -39,6 +39,9 @@
         "name": {
           "type": "string"
         },
+        "display": {
+          "type": "string"
+        },
         "dex": {
           "type": "string"
         },

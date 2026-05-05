@@ -82,7 +82,7 @@ export default function PokemonView() {
         <div className="flex-1">
           <div className="flex flex-row gap-4 w-fit justify-center">
             <Title
-              title={capitalize(pokemon?.name ?? '')}
+              title={capitalize(pokemon?.display ?? pokemon?.name ?? '')}
               className={authorParam ? 'hover:underline hover:cursor-pointer w-fit' : 'w-fit'}
               onClick={() => {
                 if (authorParam) {
