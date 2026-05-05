@@ -1,7 +1,12 @@
 {
     "$schema": "../schemas/pokedex.json",
     "name": "paldea",
+    "gen": "9.0",
     "pokemons": [
+        {
+            "number": 915,
+            "name": "lechonk"
+        },
         {
             "number": 916,
             "name": "oinkologne",
@@ -31,6 +36,10 @@
         {
             "number": 991,
             "name": "iron-bundle"
+        },
+        {
+            "number": 995,
+            "name": "iron-thorns"
         },
         {
             "number": 998,

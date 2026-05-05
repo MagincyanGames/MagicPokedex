@@ -35,24 +35,27 @@
           "type": "string"
         },
         {
-          "type": "object",
-          "properties": {
-            "base": {
-              "type": "string"
-            },
-            "forms": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              }
-            }
-          },
-          "required": [
-            "base"
-          ],
-          "additionalProperties": false
+          "$ref": "#/definitions/PokemonAuthorEntryBody"
         }
       ]
+    },
+    "PokemonAuthorEntryBody": {
+      "type": "object",
+      "properties": {
+        "base": {
+          "type": "string"
+        },
+        "forms": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "base"
+      ],
+      "additionalProperties": false
     }
   },
   "properties": {

@@ -1,6 +1,7 @@
 {
     "$schema": "../schemas/pokedex.json",
     "name": "kanto",
+    "gen": "1.0",
     "pokemons": [
         {
             "number": 1,
@@ -13,6 +14,10 @@
         {
             "number": 11,
             "name": "metapod"
+        },
+        {
+            "number": 39,
+            "name": "jigglypuff"
         },
         {
             "number": 43,

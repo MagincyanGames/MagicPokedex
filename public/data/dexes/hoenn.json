@@ -1,6 +1,7 @@
 {
     "$schema": "../schemas/pokedex.json",
     "name": "hoenn",
+    "gen": "3.0",
     "pokemons": [
         {
             "number": 252,
@@ -68,7 +69,13 @@
         },
         {
             "number": 376,
-            "name": "metagross"
+            "name": "metagross",
+            "forms": {
+                "mega": {
+                    "name": "mega",
+                    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10076.png"
+                }
+            }
         }
     ]
 }

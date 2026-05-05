@@ -1,7 +1,18 @@
 {
     "$schema": "../schemas/pokedex.json",
     "name": "kalos",
+    "gen": "6.0",
     "pokemons": [
+        {
+            "number": 678,
+            "name": "meowstic",
+            "forms": {
+                "mega": {
+                    "name": "mega",
+                    "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10314.png"
+                }
+            }
+        },
         {
             "number": 680,
             "name": "doublade"

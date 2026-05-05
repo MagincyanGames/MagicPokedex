@@ -2,6 +2,9 @@
   "name": "magicpokedex",
   "private": true,
   "type": "module",
+  "bin": {
+    "poke": "./bin/poke"
+  },
   "scripts": {
     "predeploy": "npm run build && cp build/client/index.html build/client/404.html",
     "deploy": "npm run predeploy && gh-pages -d build/client",
@@ -10,7 +13,8 @@
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
     "generate-schemas": "node scripts/generate-schemas.mjs",
-    "validate": "tsx scripts/validate-authors.ts"
+    "validate": "tsx scripts/validate-authors.ts",
+    "poke": "tsx scripts/cli/poke.ts"
   },
   "dependencies": {
     "@react-router/node": "7.14.0",
@@ -28,7 +32,9 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.5.0",
+    "commander": "^14.0.3",
     "gh-pages": "^6.3.0",
+    "inquirer": "^13.4.2",
     "postcss": "^8.5.12",
     "tailwindcss": "^4.2.4",
     "ts-json-schema-generator": "^2.9.0",

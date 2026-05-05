@@ -1,6 +1,7 @@
 {
     "$schema": "../schemas/pokedex.json",
     "name": "galar",
+    "gen": "8.0",
     "pokemons": [
         {
             "number": 824,

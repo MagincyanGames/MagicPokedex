@@ -1,6 +1,7 @@
 {
     "$schema": "../schemas/pokedex.json",
     "name": "johto",
+    "gen": "2.0",
     "pokemons": [
         {
             "number": 165,

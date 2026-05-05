@@ -1,6 +1,7 @@
 {
     "$schema": "../schemas/pokedex.json",
     "name": "sinnoh",
+    "gen": "4.0",
     "pokemons": [
         {
             "number": 398,
@@ -28,9 +29,13 @@
             "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/422.png"
         },
         {
+            "number": 424,
+            "name": "ambipom"
+        },
+        {
             "number": 425,
             "name": "drifloon",
-            "sprite":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/425.png"
+            "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/425.png"
         },
         {
             "number": 431,
@@ -62,12 +67,12 @@
         },
         {
             "number": 464,
-            "name":"rhyperior",
+            "name": "rhyperior",
             "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/464.png"
         },
         {
             "number": 479,
-            "name": "rotom", 
+            "name": "rotom",
             "forms": {
                 "fan": {
                     "name": "ventilador",
