@@ -1,13 +1,14 @@
 {
     "$schema": "schemas/author.json",
     "name": "Sukii",
+    "base_url": "/images/sukii/",
     "pokemons": {
-        "golduck": "/images/sukii/golduck.png",
-        "jolteon": "/images/sukii/jolteon.png",
-        "kangaskhan": "/images/sukii/kangaskhan.png",
-        "metapod": "/images/sukii/metapod.png",
-        "oddish": "/images/sukii/oddish.png",
-        "starmie": "/images/sukii/starmie.png",
-        "krabby": "/images/sukii/krabby.png"
+        "golduck": "golduck.png",
+        "jolteon": "jolteon.png",
+        "kangaskhan": "kangaskhan.png",
+        "metapod": "metapod.png",
+        "oddish": "oddish.png",
+        "starmie": "starmie.png",
+        "krabby": "krabby.png"
     }
 }

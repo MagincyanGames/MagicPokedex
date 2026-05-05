@@ -1,6 +1,7 @@
 {
     "$schema": "../schemas/pokedex.json",
     "name": "alola",
+    "gen": "7.0",
     "pokemons": [
         {
             "number": 725,
@@ -25,6 +26,10 @@
         {
             "number": 761,
             "name": "bounsweet"
+        },
+        {
+            "number": 765,
+            "name": "oranguru"
         },
         {
             "number": 766,

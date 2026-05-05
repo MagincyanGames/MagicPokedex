@@ -5,7 +5,14 @@
     "Pokedex": {
       "type": "object",
       "properties": {
+        "$schema": {
+          "type": "string",
+          "description": "JSON Schema reference"
+        },
         "name": {
+          "type": "string"
+        },
+        "gen": {
           "type": "string"
         },
         "pokemons": {
@@ -13,14 +20,12 @@
           "items": {
             "$ref": "#/definitions/Pokemon"
           }
-        },
-        "$schema": {
-          "type": "string",
-          "description": "JSON Schema reference"
         }
       },
       "required": [
+        "$schema",
         "name",
+        "gen",
         "pokemons"
       ],
       "additionalProperties": false
@@ -32,6 +37,9 @@
           "type": "number"
         },
         "name": {
+          "type": "string"
+        },
+        "display": {
           "type": "string"
         },
         "dex": {

@@ -1,10 +1,11 @@
 {
     "$schema": "schemas/collection.json",
     "authors": [
-        "/data/nica.json",
         "/data/sukii.json",
         "https://raw.githubusercontent.com/Yabarta/Pokedex-magic-explotation-laburo/refs/heads/main/pokedex.json",
-        "https://raw.githubusercontent.com/Mtolgon/pokemagic/refs/heads/main/mamahuevo.json"
+        "https://raw.githubusercontent.com/Mtolgon/pokemagic/refs/heads/main/mamahuevo.json",
+        "https://raw.githubusercontent.com/DYB9672elena/pokedex/refs/heads/main/nica.json"
+
     ],
     "dexes": [
         "/data/dexes/kanto.json",

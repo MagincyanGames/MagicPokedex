@@ -8,6 +8,9 @@
         "name": {
           "type": "string"
         },
+        "base_url": {
+          "type": "string"
+        },
         "pokemons": {
           "type": "object",
           "additionalProperties": {
@@ -21,6 +24,7 @@
       },
       "required": [
         "name",
+        "base_url",
         "pokemons"
       ],
       "additionalProperties": false
@@ -31,24 +35,27 @@
           "type": "string"
         },
         {
-          "type": "object",
-          "properties": {
-            "base": {
-              "type": "string"
-            },
-            "forms": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              }
-            }
-          },
-          "required": [
-            "base"
-          ],
-          "additionalProperties": false
+          "$ref": "#/definitions/PokemonAuthorEntryBody"
         }
       ]
+    },
+    "PokemonAuthorEntryBody": {
+      "type": "object",
+      "properties": {
+        "base": {
+          "type": "string"
+        },
+        "forms": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "base"
+      ],
+      "additionalProperties": false
     }
   },
   "properties": {
