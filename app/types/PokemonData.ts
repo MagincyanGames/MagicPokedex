@@ -42,6 +42,7 @@ export type PokemonForm = {
 
 export type Author = {
     name: string,
+    base_url: string,
     pokemons: Record<string, PokemonAuthorEntry>
 }
 
@@ -61,6 +62,10 @@ export type CachedData = {
 
 function getSprite(pokemon: Pokemon, form?: string | undefined | null, author?: Author | undefined | null): string {
 
+    function mapSprite(sprite: string | undefined) {
+        return author?.base_url ? author.base_url + sprite : sprite ?? ''
+    }
+
     const key = pokemon.name + (form ? "#" + form : '')
     console.log(key)
 
@@ -74,18 +79,18 @@ function getSprite(pokemon: Pokemon, form?: string | undefined | null, author?: 
     const pae = author.pokemons[pokemon.name]
 
     if (form && key in author.pokemons)
-        return author.pokemons[key] as string //* Para este formato el contenido debe ser un string
+        return mapSprite(author.pokemons[key] as string) //* Para este formato el contenido debe ser un string
 
     if (!pae) {
-        return pokemon.sprite ?? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.number}.png`
+        return mapSprite(pokemon.sprite) ?? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.number}.png`
     }
 
     if (!form)
-        return typeof pae === 'string' ? pae : pae.base
+        return mapSprite(typeof pae === 'string' ? pae : pae.base)
 
     console.log("pokemons" + JSON.stringify(author.pokemons))
 
-    return (pae as PokemonAuthorEntryBody).forms![form]
+    return mapSprite((pae as PokemonAuthorEntryBody).forms![form])
 
 }
 const CACHE_KEY = 'pokemon_collections_cache'
@@ -225,5 +230,5 @@ export const Collections = {
     getPokemonList,
     getAuthor,
     getPokemon,
-    getSprite: getSprite
+    getSprite
 }
