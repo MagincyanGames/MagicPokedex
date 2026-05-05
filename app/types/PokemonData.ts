@@ -1,6 +1,12 @@
 import { FetchLink } from "./Link"
 
-const CACHE_EXPIRE_SECONDS = import.meta.env.MODE === 'development' ? 1 : 100
+let CACHE_EXPIRE_SECONDS = 100
+try {
+  CACHE_EXPIRE_SECONDS = import.meta.env.MODE === 'development' ? 1 : 100
+} catch (e) {
+  // import.meta.env no disponible en Node.js (para scripts)
+  CACHE_EXPIRE_SECONDS = 100
+}
 
 export type Collection = {
     authors: string[],
@@ -46,12 +52,17 @@ export type Author = {
     pokemons: Record<string, PokemonAuthorEntry>
 }
 
-type PokemonAuthorEntryBody = {
+export type PokemonAuthorEntryBody = {
     base: string
     forms?: Record<string, string>
 }
 
 export type PokemonAuthorEntry = string | PokemonAuthorEntryBody
+
+export type ValidationError = {
+    pokemon: string
+    form?: string
+}
 
 export type CachedData = {
     authors: Author[],
@@ -67,7 +78,6 @@ function getSprite(pokemon: Pokemon, form?: string | undefined | null, author?: 
     }
 
     const key = pokemon.name + (form ? "#" + form : '')
-    console.log(key)
 
     if (!author) {
         if (!form)
@@ -97,19 +107,19 @@ const CACHE_KEY = 'pokemon_collections_cache'
 
 function getCachedCollections(): CachedData | null {
     if (typeof window === 'undefined') {
-        console.log('[CACHE] Window is undefined (SSR)')
+        // console.log('[CACHE] Window is undefined (SSR)')
         return null
     }
 
     try {
-        console.log('[CACHE] Attempting to read cache from localStorage')
+        // console.log('[CACHE] Attempting to read cache from localStorage')
         const cached = localStorage.getItem(CACHE_KEY)
         if (!cached) {
-            console.log('[CACHE] No cache found in localStorage')
+            // console.log('[CACHE] No cache found in localStorage')
             return null
         }
 
-        console.log('[CACHE] Cache found, parsing data')
+        // console.log('[CACHE] Cache found, parsing data')
         const data = JSON.parse(cached) as CachedData
         const now = Date.now() / 1000 // segundos
         const elapsedSeconds = now - data.date
@@ -118,23 +128,23 @@ function getCachedCollections(): CachedData | null {
 
         // Verificar si el caché ha expirado
         if (elapsedSeconds < data.expire) {
-            console.log('[CACHE] Cache is still valid, returning cached data')
+            // console.log('[CACHE] Cache is still valid, returning cached data')
             return data
         }
 
         // Si expiró, eliminar del localStorage
-        console.log('[CACHE] Cache has expired, removing from localStorage')
+        // console.log('[CACHE] Cache has expired, removing from localStorage')
         localStorage.removeItem(CACHE_KEY)
         return null
     } catch (error) {
-        console.error('[CACHE] Error reading cache:', error)
+        // console.error('[CACHE] Error reading cache:', error)
         return null
     }
 }
 
 function setCachedCollections(authors: Author[], dexes: Pokedex[], expireSeconds: number): void {
     if (typeof window === 'undefined') {
-        console.log('[CACHE] Window is undefined (SSR), skipping cache save')
+        // console.log('[CACHE] Window is undefined (SSR), skipping cache save')
         return
     }
 
@@ -149,17 +159,17 @@ function setCachedCollections(authors: Author[], dexes: Pokedex[], expireSeconds
         localStorage.setItem(CACHE_KEY, JSON.stringify(data))
         console.log(`[CACHE] Cache saved successfully. Key: ${CACHE_KEY}`)
     } catch (error) {
-        console.error('[CACHE] Error setting cache:', error)
+        // console.error('[CACHE] Error setting cache:', error)
     }
 }
 
 async function getCollections(): Promise<ComplexCollection> {
-    console.log('[COLLECTIONS] Getting collections...')
+    // console.log('[COLLECTIONS] Getting collections...')
 
     // Intentar obtener del caché
     const cached = getCachedCollections()
     if (cached) {
-        console.log('[COLLECTIONS] Using cached data')
+        // console.log('[COLLECTIONS] Using cached data')
         const pokemons = getPokemonList(cached.dexes)
         return {
             authors: cached.authors,
@@ -196,7 +206,7 @@ async function getCollections(): Promise<ComplexCollection> {
             pokemons
         }
     } catch (error) {
-        console.error('[COLLECTIONS] Error fetching authors/dexes:', error)
+        // console.error('[COLLECTIONS] Error fetching authors/dexes:', error)
         throw error
     }
 }
@@ -224,11 +234,58 @@ function getPokemonList(pokedex: Pokedex[]) {
     })).flat()
 }
 
+function validateList(author: Author, pokemons?: Pokemon[], silent: boolean = true): ValidationError[] {
+    const errors: ValidationError[] = []
+
+    Object.entries(author.pokemons).forEach(([key, value]) => {
+        const [baseName, formName] = key.split("#")
+        const pokemonData = pokemons?.find(p => p.name === baseName)
+
+        if (!pokemonData) {
+            if (typeof value === 'string') {
+                if (!silent) if (!silent) console.warn(`Pokemon not found: ${key}`)
+                errors.push({ pokemon: key })
+            } else {
+                const body = value as PokemonAuthorEntryBody
+                if (body.forms) {
+                    const formsList = Object.keys(body.forms).join(', ')
+                    if (!silent) console.warn(`Pokemon not found: ${baseName} (formas: ${formsList})`)
+                    Object.keys(body.forms).forEach(form => {
+                        errors.push({ pokemon: baseName, form })
+                    })
+                } else {
+                    if (!silent) console.warn(`Pokemon not found: ${baseName}`)
+                    errors.push({ pokemon: baseName })
+                }
+            }
+        } else {
+            if (typeof value !== 'string') {
+                const body = value as PokemonAuthorEntryBody
+                if (body.forms) {
+                    Object.keys(body.forms).forEach(authorForm => {
+                        if (!pokemonData.forms || !(authorForm in pokemonData.forms)) {
+                            if (!silent) console.warn(`Form not found for ${baseName}: ${authorForm}`)
+                            errors.push({ pokemon: baseName, form: authorForm })
+                        }
+                    })
+                }
+            } else if (formName) {
+                if (!pokemonData.forms || !(formName in pokemonData.forms)) {
+                    if (!silent) console.warn(`Form not found for ${baseName}: ${formName}`)
+                    errors.push({ pokemon: baseName, form: formName })
+                }
+            }
+        }
+    })
+
+    return errors
+}
 
 export const Collections = {
     getCollections,
     getPokemonList,
     getAuthor,
     getPokemon,
-    getSprite
+    getSprite,
+    validateList
 }

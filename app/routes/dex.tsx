@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router";
 import Selector from "~/components/selector";
 import { Link } from "~/types/Link";
-import { Collections, type Author, type Pokedex, type Pokemon, type ShowingPokemon } from "~/types/PokemonData";
+import { Collections, type Author, type Pokedex, type Pokemon, type PokemonAuthorEntryBody, type ShowingPokemon } from "~/types/PokemonData";
 import { capitalize } from "~/utiles/format";
 import { BuildQuery } from "~/utiles/query";
 
@@ -39,6 +39,10 @@ export default function Dex() {
   }, []);
 
   useEffect(() => {
+
+    if (selectedAuthor) {
+      Collections.validateList(selectedAuthor, pokemons)
+    }
 
     const unformPokemonList = selectedAuthor ? new Set(Object.entries(selectedAuthor.pokemons).map(p =>
       p[0].split('#')[0]

@@ -9,7 +9,8 @@
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
-    "generate-schemas": "node scripts/generate-schemas.mjs"
+    "generate-schemas": "node scripts/generate-schemas.mjs",
+    "validate": "tsx scripts/validate-authors.ts"
   },
   "dependencies": {
     "@react-router/node": "7.14.0",
@@ -31,6 +32,7 @@
     "postcss": "^8.5.12",
     "tailwindcss": "^4.2.4",
     "ts-json-schema-generator": "^2.9.0",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "typescript-json-schema": "^0.67.1",
     "vite": "^8.0.3"
