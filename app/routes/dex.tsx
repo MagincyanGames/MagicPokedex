@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+import { FiSearch } from "react-icons/fi";
+import { MdSearch } from "react-icons/md";
 import { useNavigate, useSearchParams } from "react-router";
 import Selector from "~/components/selector.js";
+import Title from "~/components/title";
 import { Link } from "~/types/Link.js";
 import { Collections, type Author, type Pokedex, type Pokemon, type PokemonAuthorEntryBody, type ShowingPokemon } from "~/types/PokemonData.js";
 import { capitalize } from "~/utiles/format.js";
@@ -16,6 +19,7 @@ export default function Dex() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
+  const nameParam = searchParams.get("name");
   const authorParam = searchParams.get("author");
   const regionParam = searchParams.get("region");
 
@@ -28,11 +32,6 @@ export default function Dex() {
       setDexes(complexCol.dexes)
 
       setPokemons(complexCol.pokemons)
-      setShowingPokemons(complexCol.pokemons?.map(p => {
-        return {
-          pokemon: p,
-        }
-      }))
     }
 
     load()
@@ -48,7 +47,11 @@ export default function Dex() {
       p[0].split('#')[0]
     )) : null
 
-    setShowingPokemons(pokemons?.filter(p => (!unformPokemonList || unformPokemonList.has(p.name)) && (!regionParam || p.dex?.toLocaleLowerCase() === regionParam.toLocaleLowerCase())).map(
+    setShowingPokemons(pokemons?.filter(p =>
+      (!nameParam || p.name.startsWith(nameParam) || p.display?.startsWith(nameParam)) &&
+      (!unformPokemonList || unformPokemonList.has(p.name)) &&
+      (!regionParam || p.dex?.toLocaleLowerCase() === regionParam.toLocaleLowerCase())
+    ).map(
       p => {
         let form: string | undefined = undefined
 
@@ -64,29 +67,43 @@ export default function Dex() {
         }
       }
     ))
-  }, [selectedAuthor, pokemons, regionParam])
+  }, [selectedAuthor, pokemons, regionParam, nameParam])
 
   return (
     <main className="min-h-screen w-full">
       <div className="flex flex-col min-h-[calc(100vh-3rem)] items-center gap-8 w-full">
-        <div className="mt-20 w-full flex flex-col items-center">
-          <div className="flex flex-row items-center gap-8 w-fit p-4 rounded-2xl" style={{ backgroundColor: "#BB0000" }}>
-            <Selector
-              title="Autor:"
-              options={authors}
-              value={authorParam}
-              onChange={(authorP) => {
-                navigate(`/dex${BuildQuery({ author: authorP, region: regionParam })}`)
-              }}
-            />
-            <Selector
-              title="Región:"
-              options={dexes?.map(d => ({ name: d.name, display: capitalize(d.name) }))}
-              value={regionParam}
-              onChange={(regionP) => {
-                navigate(`/dex${BuildQuery({ author: authorParam, region: regionP })}`)
-              }}
-            />
+        <div className="mt-10 w-full flex flex-col items-center">
+          <div className="flex flex-col items-center rounded-2xl p-4 gap-4"
+            style={{ backgroundColor: "#BB0000" }}>
+            <Title title="MagicDex"
+              className="mt-2 text-white text-4xl"
+              centered />
+            <div className="flex flex-row items-center gap-2 w-fit  rounded-3xl " >
+              <input className="bg-red-800 p-3  w-100 rounded-2xl text-center"
+                value={nameParam ?? ''}
+                onChange={(ev) => navigate(`/dex${BuildQuery({ author: authorParam, region: regionParam, name: ev.target.value })}`)}
+              >
+              </input>
+              <FiSearch strokeWidth={3} size={30} />
+            </div >
+            <div className="flex flex-row items-center gap-8 w-fit rounded-2xl">
+              <Selector
+                title="Autor:"
+                options={authors}
+                value={authorParam}
+                onChange={(authorP) => {
+                  navigate(`/dex${BuildQuery({ author: authorP, region: regionParam, name: nameParam })}`)
+                }}
+              />
+              <Selector
+                title="Región:"
+                options={dexes?.map(d => ({ name: d.name, display: capitalize(d.name) }))}
+                value={regionParam}
+                onChange={(regionP) => {
+                  navigate(`/dex${BuildQuery({ author: authorParam, region: regionP })}`)
+                }}
+              />
+            </div>
           </div>
           <div className="m-8 w-fit flex-col gap-20 grid grid-cols-5  p-9 mx-auto rounded-2xl"
             style={{

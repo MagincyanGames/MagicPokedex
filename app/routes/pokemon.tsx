@@ -140,7 +140,7 @@ export default function PokemonView() {
         ) : null}
 
         <button
-          onClick={() => navigate('/dex')}
+          onClick={() => navigate('/dex' + BuildQuery({ author: authorParam }))}
           className="absolute bottom-4 left-4 bg-red-600 hover:bg-red-700 text-white rounded-2xl shadow-lg transition-colors text-2xl h-10 w-10 flex items-center justify-center hover:cursor-pointer"
           aria-label="Back to Dex"
         >

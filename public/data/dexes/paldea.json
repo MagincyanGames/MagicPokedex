@@ -36,11 +36,12 @@
         {
             "number": 991,
             "name": "iron-bundle",
-            "display": "Ferrosaco"
+            "display": "ferrosaco"
         },
         {
             "number": 995,
-            "name": "iron-thorns"
+            "name": "iron-thorns",
+            "display": "ferropúas"
         },
         {
             "number": 998,
