@@ -129,7 +129,7 @@ export default function PokemonView() {
           </div>
         </div>
 
-        <div className="flex-1 flex-col">
+        {evolution && evolution?.length > 0 && <div className="flex-1 flex-col">
           <Title
             title="Evolution"
             className="mb-5"
@@ -139,7 +139,7 @@ export default function PokemonView() {
           }}>
             {p.name}
           </div>))}
-        </div>
+        </div>}
         {image ? (
           <div className="flex-1 flex justify-center items-center">
             <img

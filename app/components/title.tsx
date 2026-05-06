@@ -5,6 +5,7 @@ type TitleProps = {
     onClick?: () => void;
 }
 
+//TODO hacer estilos de títulos en lugar de customizar cada uno al detalle
 export default function Title({ title, onClick, className = "", centered = false }: TitleProps) {
     // Detectar si className contiene estilos específicos
     const hasFontSize = /text-\w+/.test(className);

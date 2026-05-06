@@ -1,5 +1,5 @@
 import type { SignatureHelpTriggerCharacter } from "typescript"
-import { FetchLink } from "./Link"
+import { FetchLink, Link } from "./Link"
 
 let CACHE_EXPIRE_SECONDS = 100
 try {
@@ -219,11 +219,11 @@ function getPokemon(pokemon: string, col: ComplexCollection) {
     return filtered[0]
 }
 
-function getAuthor(author: string, col: ComplexCollection) {
+function getAuthor(author: string, col: ComplexCollection): Author | undefined {
     const filtered = col.authors.filter(a => a.name.toLowerCase() === author.toLowerCase())
 
     if (filtered.length <= 0)
-        throw new Error()
+        return undefined
 
     return filtered[0]
 }
@@ -281,11 +281,41 @@ function validateList(author: Author, pokemons?: Pokemon[], silent: boolean = tr
     return errors
 }
 
+function getShowingPokemons(author?: Author, pokemons?: Pokemon[],
+    filter?: { name?: string, region?: string }): ShowingPokemon[] | undefined {
+    const unformPokemonSet = author ? new Set(Object.entries(author.pokemons).map(p =>
+        p[0].split('#')[0]
+    )) : null
+
+    return pokemons?.filter(p =>
+        (!filter?.name || p.name.startsWith(filter.name) || p.display?.startsWith(filter.name)) &&
+        (!filter?.region || p.dex?.toLocaleLowerCase() === filter.region.toLocaleLowerCase()) &&
+        (!unformPokemonSet || unformPokemonSet.has(p.name))
+    ).map(
+        p => {
+            let form: string | undefined = undefined
+
+            //* For body format
+            if (author && p.forms && !(p.name in author.pokemons)) {
+                const keys = Object.keys(p.forms!).map(k => p.name + '#' + k)
+                form = Object.keys(author.pokemons).find(p => keys.includes(p))?.split('#')[1]
+            }
+
+            return {
+                link: Link(Collections.getSprite(p, form, author)),
+                pokemon: p,
+                form
+            }
+        }
+    )
+}
+
 export const Collections = {
     getCollections,
     getPokemonList,
     getAuthor,
     getPokemon,
     getSprite,
-    validateList
+    validateList,
+    getShowingPokemons
 }

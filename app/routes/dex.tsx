@@ -18,14 +18,14 @@ export default function Dex() {
 
   const [searchParams] = useSearchParams();
   const query = {
-    name: searchParams.get("name"),
-    author: searchParams.get("author"),
-    region: searchParams.get("region"),
+    name: searchParams.get("name") ?? undefined,
+    author: searchParams.get("author") ?? undefined,
+    region: searchParams.get("region") ?? undefined,
   }
 
   const navigate = useNavigate();
 
-  const selectedAuthor = authors?.find(a => a.name === query.author) || null;
+  const selectedAuthor = authors?.find(a => a.name === query.author);
 
   useEffect(() => {
     async function load() {
@@ -45,30 +45,17 @@ export default function Dex() {
       Collections.validateList(selectedAuthor, pokemons)
     }
 
+    //TODO: Abstraer la lógica y reutilizar 
+
     const unformPokemonList = selectedAuthor ? new Set(Object.entries(selectedAuthor.pokemons).map(p =>
       p[0].split('#')[0]
     )) : null
 
-    setShowingPokemons(pokemons?.filter(p =>
-      (!query.name || p.name.startsWith(query.name) || p.display?.startsWith(query.name)) &&
-      (!unformPokemonList || unformPokemonList.has(p.name)) &&
-      (!query.region || p.dex?.toLocaleLowerCase() === query.region.toLocaleLowerCase())
-    ).map(
-      p => {
-        let form: string | undefined = undefined
-
-        if (selectedAuthor && !(p.name in selectedAuthor.pokemons) && p.forms) {
-          const keys = Object.keys(p.forms!).map(k => p.name + '#' + k)
-          form = Object.keys(selectedAuthor.pokemons).find(p => keys.includes(p))?.split('#')[1]
-        }
-
-        return {
-          link: Link(Collections.getSprite(p, form, selectedAuthor)),
-          pokemon: p,
-          form
-        }
-      }
-    ))
+    const showing = Collections.getShowingPokemons(selectedAuthor, pokemons, {
+      name: query.name,
+      region: query.region
+    })
+    setShowingPokemons(showing)
   }, [selectedAuthor, pokemons, query.name, query.region])
 
   return (
