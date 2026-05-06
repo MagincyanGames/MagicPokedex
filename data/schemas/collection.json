@@ -1,38 +1,67 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$ref": "#/definitions/Collection",
-  "definitions": {
-    "Collection": {
-      "type": "object",
-      "properties": {
-        "authors": {
-          "type": "array",
-          "items": {
-            "type": "string"
+  "type": "object",
+  "properties": {
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "name"
+          },
+          "base_url": {
+            "type": "string",
+            "title": "base_url"
+          },
+          "pokemons": {
+            "$ref": "#/definitions/Record%3Cstring%2CAuthorEntry%3E",
+            "title": "pokemons"
           }
         },
-        "dexes": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "$schema": {
-          "type": "string",
-          "description": "JSON Schema reference"
-        }
+        "required": [
+          "base_url",
+          "name",
+          "pokemons"
+        ]
       },
-      "required": [
-        "authors",
-        "dexes"
-      ],
-      "additionalProperties": false
+      "title": "authors"
+    },
+    "dexes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "name"
+          },
+          "pokemons": {
+            "$ref": "#/definitions/Record%3Cstring%2CPokemon%3E",
+            "title": "pokemons"
+          }
+        },
+        "required": [
+          "name",
+          "pokemons"
+        ]
+      },
+      "title": "dexes"
     }
   },
-  "properties": {
-    "$schema": {
-      "type": "string",
-      "description": "JSON Schema reference"
+  "required": [
+    "authors",
+    "dexes"
+  ],
+  "definitions": {
+    "Record<string,AuthorEntry>": {
+      "title": "Record<string,AuthorEntry>",
+      "type": "object"
+    },
+    "Record<string,Pokemon>": {
+      "title": "Record<string,Pokemon>",
+      "type": "object"
     }
-  }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
 }

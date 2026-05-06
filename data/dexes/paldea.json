@@ -2,14 +2,12 @@
     "$schema": "../schemas/pokedex.json",
     "name": "paldea",
     "gen": "9.0",
-    "pokemons": [
-        {
-            "number": 915,
-            "name": "lechonk"
+    "pokemons": {
+        "lechonk": {
+            "number": 915
         },
-        {
+        "oinkologne": {
             "number": 916,
-            "name": "oinkologne",
             "forms": {
                 "hembra": {
                     "name": "Hembra",
@@ -17,35 +15,28 @@
                 }
             }
         },
-        {
-            "number": 925,
-            "name": "maushold"
+        "maushold": {
+            "number": 925
         },
-        {
-            "number": 959,
-            "name": "tinkaton"
+        "tinkaton": {
+            "number": 959
         },
-        {
-            "number": 965,
-            "name": "varoom"
+        "varoom": {
+            "number": 965
         },
-        {
-            "number": 982,
-            "name": "dudunsparce"
+        "dudunsparce": {
+            "number": 982
         },
-        {
+        "iron-bundle": {
             "number": 991,
-            "name": "iron-bundle",
             "display": "ferrosaco"
         },
-        {
+        "iron-thorns": {
             "number": 995,
-            "name": "iron-thorns",
             "display": "ferropúas"
         },
-        {
+        "baxcalibur": {
             "number": 998,
-            "name": "baxcalibur",
             "forms": {
                 "mega": {
                     "name": "Mega",
@@ -53,13 +44,11 @@
                 }
             }
         },
-        {
-            "number": 1002,
-            "name": "chien-pao"
+        "chien-pao": {
+            "number": 1002
         },
-        {
-            "number": 1011,
-            "name": "dipplin"
+        "dipplin": {
+            "number": 1011
         }
-    ]
+    }
 }

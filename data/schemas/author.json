@@ -1,67 +1,29 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$ref": "#/definitions/Author",
-  "definitions": {
-    "Author": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "base_url": {
-          "type": "string"
-        },
-        "pokemons": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/PokemonAuthorEntry"
-          }
-        },
-        "$schema": {
-          "type": "string",
-          "description": "JSON Schema reference"
-        }
-      },
-      "required": [
-        "name",
-        "base_url",
-        "pokemons"
-      ],
-      "additionalProperties": false
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "name"
     },
-    "PokemonAuthorEntry": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "$ref": "#/definitions/PokemonAuthorEntryBody"
-        }
-      ]
+    "base_url": {
+      "type": "string",
+      "title": "base_url"
     },
-    "PokemonAuthorEntryBody": {
-      "type": "object",
-      "properties": {
-        "base": {
-          "type": "string"
-        },
-        "forms": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        }
-      },
-      "required": [
-        "base"
-      ],
-      "additionalProperties": false
+    "pokemons": {
+      "$ref": "#/definitions/Record%3Cstring%2CAuthorEntry%3E",
+      "title": "pokemons"
     }
   },
-  "properties": {
-    "$schema": {
-      "type": "string",
-      "description": "JSON Schema reference"
+  "required": [
+    "base_url",
+    "name",
+    "pokemons"
+  ],
+  "definitions": {
+    "Record<string,AuthorEntry>": {
+      "title": "Record<string,AuthorEntry>",
+      "type": "object"
     }
-  }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
 }

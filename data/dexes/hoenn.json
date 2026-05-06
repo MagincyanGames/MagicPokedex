@@ -2,74 +2,57 @@
     "$schema": "../schemas/pokedex.json",
     "name": "hoenn",
     "gen": "3.0",
-    "pokemons": [
-        {
-            "number": 252,
-            "name": "treecko"
+    "pokemons": {
+        "treecko": {
+            "number": 252
         },
-        {
-            "number": 258,
-            "name": "mudkip"
+        "mudkip": {
+            "number": 258
         },
-        {
-            "number": 259,
-            "name": "marshtomp"
+        "marshtomp": {
+            "number": 259
         },
-        {
-            "number": 269,
-            "name": "dustox"
+        "dustox": {
+            "number": 269
         },
-        {
-            "number": 286,
-            "name": "breloom"
+        "breloom": {
+            "number": 286
         },
-        {
-            "number": 300,
-            "name": "skitty"
+        "skitty": {
+            "number": 300
         },
-        {
-            "number": 316,
-            "name": "gulpin"
+        "gulpin": {
+            "number": 316
         },
-        {
-            "number": 318,
-            "name": "carvanha"
+        "carvanha": {
+            "number": 318
         },
-        {
-            "number": 322,
-            "name": "numel"
+        "numel": {
+            "number": 322
         },
-        {
-            "number": 323,
-            "name": "camerupt"
+        "camerupt": {
+            "number": 323
         },
-        {
-            "number": 326,
-            "name": "grumpig"
+        "grumpig": {
+            "number": 326
         },
-        {
-            "number": 328,
-            "name": "trapinch"
+        "trapinch": {
+            "number": 328
         },
-        {
-            "number": 334,
-            "name": "altaria"
+        "altaria": {
+            "number": 334
         },
-        {
-            "number": 352,
-            "name": "kecleon"
+        "kecleon": {
+            "number": 352
         },
-        {
-            "number": 357,
-            "name": "tropius"
+        "tropius": {
+            "number": 357
         },
-        {
-            "number": 367,
-            "name": "huntail"
+        "huntail": {
+            "number": 367
         },
-        {
+        "metagross": {
             "number": 376,
-            "name": "metagross",
             "forms": {
                 "mega": {
                     "name": "Mega",
@@ -77,5 +60,5 @@
                 }
             }
         }
-    ]
+    }
 }

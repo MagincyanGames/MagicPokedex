@@ -1,0 +1,1 @@
+import{A as e,M as t,t as n}from"./jsx-runtime-DCEPc_fG.js";import"./title-3wp7PM6F.js";t();var r=n(),i=e(function(){return(0,r.jsx)(`main`,{className:`min-h-screen w-full p-8`,children:`     `})});export{i as default};

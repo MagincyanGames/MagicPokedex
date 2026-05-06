@@ -2,50 +2,39 @@
     "$schema": "../schemas/pokedex.json",
     "name": "alola",
     "gen": "7.0",
-    "pokemons": [
-        {
-            "number": 725,
-            "name": "litten"
+    "pokemons": {
+        "litten": {
+            "number": 725
         },
-        {
-            "number": 729,
-            "name": "brionne"
+        "brionne": {
+            "number": 729
         },
-        {
-            "number": 744,
-            "name": "rockruff"
+        "rockruff": {
+            "number": 744
         },
-        {
-            "number": 747,
-            "name": "mareanie"
+        "mareanie": {
+            "number": 747
         },
-        {
-            "number": 760,
-            "name": "bewear"
+        "bewear": {
+            "number": 760
         },
-        {
-            "number": 761,
-            "name": "bounsweet"
+        "bounsweet": {
+            "number": 761
         },
-        {
-            "number": 765,
-            "name": "oranguru"
+        "oranguru": {
+            "number": 765
         },
-        {
-            "number": 766,
-            "name": "passimian"
+        "passimian": {
+            "number": 766
         },
-        {
-            "number": 770,
-            "name": "palossand"
+        "palossand": {
+            "number": 770
         },
-        {
-            "number": 789,
-            "name": "cosmog"
+        "cosmog": {
+            "number": 789
         },
-        {
-            "number": 794,
-            "name": "buzzwole"
+        "buzzwole": {
+            "number": 794
         }
-    ]
+    }
 }

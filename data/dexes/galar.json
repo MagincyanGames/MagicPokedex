@@ -2,22 +2,18 @@
     "$schema": "../schemas/pokedex.json",
     "name": "galar",
     "gen": "8.0",
-    "pokemons": [
-        {
-            "number": 824,
-            "name": "blipbug"
+    "pokemons": {
+        "blipbug": {
+            "number": 824
         },
-        {
-            "number": 830,
-            "name": "eldegoss"
+        "eldegoss": {
+            "number": 830
         },
-        {
-            "number": 833,
-            "name": "chewtle"
+        "chewtle": {
+            "number": 833
         },
-        {
+        "drednaw": {
             "number": 834,
-            "name": "drednaw",
             "forms": {
                 "gmax": {
                     "name": "gigamax",
@@ -25,33 +21,26 @@
                 }
             }
         },
-        {
-            "number": 845,
-            "name": "cramorant"
+        "cramorant": {
+            "number": 845
         },
-        {
-            "number": 851,
-            "name": "centiskorch"
+        "centiskorch": {
+            "number": 851
         },
-        {
-            "number": 585,
-            "name": "hattrem"
+        "hattrem": {
+            "number": 585
         },
-        {
-            "number": 586,
-            "name": "hatterene"
+        "hatterene": {
+            "number": 586
         },
-        {
-            "number": 855,
-            "name": "polteageist"
+        "polteageist": {
+            "number": 855
         },
-        {
-            "number": 865,
-            "name": "sirfetchd"
+        "sirfetchd": {
+            "number": 865
         },
-        {
-            "number": 890,
-            "name": "eternatus"
+        "eternatus": {
+            "number": 890
         }
-    ]
+    }
 }

@@ -2,10 +2,9 @@
     "$schema": "../schemas/pokedex.json",
     "name": "kalos",
     "gen": "6.0",
-    "pokemons": [
-        {
+    "pokemons": {
+        "meowstic": {
             "number": 678,
-            "name": "meowstic",
             "forms": {
                 "mega": {
                     "name": "mega",
@@ -13,17 +12,14 @@
                 }
             }
         },
-        {
-            "number": 680,
-            "name": "doublade"
+        "doublade": {
+            "number": 680
         },
-        {
-            "number": 703,
-            "name": "carbink"
+        "carbink": {
+            "number": 703
         },
-        {
+        "avalugg": {
             "number": 713,
-            "name": "avalugg",
             "forms": {
                 "hisui": {
                     "name": "Hisui",
@@ -31,5 +27,5 @@
                 }
             }
         }
-    ]
+    }
 }
