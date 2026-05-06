@@ -49,7 +49,6 @@ export type AuthorJSON = {
     pokemons: Record<string, AuthorEntryJSON>
 }
 
-
 export type AuthorEntry = {
     base?: string
     forms?: Record<string, string>

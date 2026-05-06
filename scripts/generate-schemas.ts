@@ -33,6 +33,9 @@ function generateSchemaForType(typeName: string): Record<string, any> {
       typeOfKeyword: false,
       additionalProperties: true,
       ignoreErrors: true,
+      topRef: true,
+      exposedTypes: ["AuthorEntry", "PokemonForm", "Pokemon"],
+      jsDoc: "extended",
     };
 
     // Crear el programa de TypeScript con opcionesPersonalizadas
@@ -57,10 +60,84 @@ function generateSchemaForType(typeName: string): Record<string, any> {
     );
 
     // Generar el schema
-    const schema = TJS.generateSchema(program, typeName, settings);
+    let schema = TJS.generateSchema(program, typeName, settings);
 
     if (!schema) {
       throw new Error(`No se pudo generar schema para ${typeName}`);
+    }
+
+    // Post-procesamiento: agregar definiciones faltantes para Record types
+    if (typeName === "AuthorJSON") {
+      // Buscar y arreglar la definición del Record<string, AuthorEntryJSON>
+      if (schema.definitions) {
+        const recordKey = "Record<string,AuthorEntryJSON>";
+        
+        // Arreglar la definición del Record si existe
+        if (schema.definitions[recordKey]) {
+          schema.definitions[recordKey] = {
+            title: recordKey,
+            type: "object",
+            additionalProperties: {
+              $ref: "#/definitions/AuthorEntryJSON"
+            }
+          };
+        }
+      }
+      
+      // Agregar definición de AuthorEntryJSON (unión: string | AuthorEntry)
+      if (!schema.definitions.AuthorEntryJSON) {
+        schema.definitions.AuthorEntryJSON = {
+          anyOf: [
+            {
+              type: "string"
+            },
+            {
+              $ref: "#/definitions/AuthorEntry"
+            }
+          ],
+          title: "AuthorEntryJSON"
+        };
+      }
+      
+      // Agregar definición de AuthorEntry
+      if (!schema.definitions.AuthorEntry) {
+        schema.definitions.AuthorEntry = {
+          type: "object",
+          properties: {
+            base: {
+              type: "string",
+              title: "base"
+            },
+            forms: {
+              $ref: "#/definitions/FormsRecord",
+              title: "forms"
+            }
+          },
+          title: "AuthorEntry"
+        };
+      }
+
+      // Agregar definición de FormsRecord
+      if (!schema.definitions.FormsRecord) {
+        schema.definitions.FormsRecord = {
+          title: "FormsRecord",
+          type: "object",
+          additionalProperties: {
+            type: "string"
+          }
+        };
+      }
+    }
+
+    // Post-procesamiento para Pokedex
+    if (typeName === "Pokedex" && schema.definitions?.PokemonRecord) {
+      schema.definitions.PokemonRecord = {
+        title: "PokemonRecord",
+        type: "object",
+        additionalProperties: {
+          $ref: "#/definitions/Pokemon"
+        }
+      };
     }
 
     console.log(`✓ Schema de ${typeName} generado`);
@@ -81,9 +158,9 @@ function saveSchema(filename: string, schema: Record<string, any>): void {
 
 // Tipos a generar
 const typesToGenerate = [
-  { typeName: "Author", filename: "author.json" },
+  { typeName: "AuthorJSON", filename: "author.json" },
   { typeName: "Pokedex", filename: "pokedex.json" },
-  { typeName: "Collection", filename: "collection.json" },
+  { typeName: "CollectionJSON", filename: "collection.json" },
 ];
 
 try {

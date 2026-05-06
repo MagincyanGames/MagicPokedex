@@ -32,7 +32,7 @@ export default function Dex() {
         unique: true
       })
     )
-  }, [selectedAuthor, Pokemons, query.name, query.region])
+  }, [Pokemons, selectedAuthor, query.name, query.region])
 
   return (
     <main className="min-h-screen w-full">
