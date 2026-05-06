@@ -71,6 +71,23 @@ export default function showcase() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [showingPokemonList, query.index, navigate]);
 
+  useEffect(() => {
+    if (!showingPokemonList) return;
+
+    const idle = window.requestIdleCallback(() => {
+      showingPokemonList.forEach(p => {
+        if (!p.link) return
+
+        const img = new Image();
+        img.src = p.link;
+      });
+    });
+
+    return () => window.cancelIdleCallback(idle);
+  }, [showingPokemonList]);
+
+
+
   return (
     <main className="h-screen w-full p-4">
 
@@ -86,6 +103,7 @@ export default function showcase() {
             src={Link(showingPokemon.link ?? '')}
             alt={showingPokemon?.name}
             onLoad={handleImageLoad}
+            fetchPriority="high"
           />}
         </div>
         <div className="flex items-center justify-center h-35 min-w-150 bg-red-600 rounded-3xl ">
