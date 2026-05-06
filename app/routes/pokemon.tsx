@@ -14,6 +14,7 @@ export default function PokemonView() {
   const formParam = searchParams.get('form')
 
   const [pokemon, setPokemon] = useState<Pokemon>()
+  const [evolution, setEvolutions] = useState<[Pokemon, string][]>()
   const [form, setForm] = useState<PokemonForm>()
   const [dexes, setDexes] = useState<string[]>([])
   const [image, setImage] = useState<string>()
@@ -37,6 +38,10 @@ export default function PokemonView() {
       const pokemon = Collections.getPokemon(pokemonName, col)
 
       setPokemon(pokemon)
+
+      if (pokemon.evolves)
+        setEvolutions(Object.keys(pokemon.evolves).map(p => [Collections.getPokemon(p, col), pokemon.evolves![p]]))
+      else setEvolutions([])
 
       console.log(formParam)
       console.log(pokemon.forms ? pokemon.forms[formParam ?? ''] : '')
@@ -127,6 +132,17 @@ export default function PokemonView() {
           </div>
         </div>
 
+        <div className="flex-1 flex-col">
+          <Title
+            title="Evolution"
+            className="mb-5"
+          />
+          {evolution?.map(([p, method]) => (<div className="text-black font-bold hover:cursor-pointer" onClick={() => {
+            navigate(`/pokemon/${p.name}${BuildQuery({ author: authorParam })}`)
+          }}>
+            {p.name}
+          </div>))}
+        </div>
         {image ? (
           <div className="flex-1 flex justify-center items-center">
             <img

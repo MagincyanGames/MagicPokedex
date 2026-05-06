@@ -1,38 +1,24 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$ref": "#/definitions/Collection",
-  "definitions": {
-    "Collection": {
-      "type": "object",
-      "properties": {
-        "authors": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "dexes": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "$schema": {
-          "type": "string",
-          "description": "JSON Schema reference"
-        }
+  "type": "object",
+  "properties": {
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "string"
       },
-      "required": [
-        "authors",
-        "dexes"
-      ],
-      "additionalProperties": false
+      "title": "authors"
+    },
+    "dexes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "title": "dexes"
     }
   },
-  "properties": {
-    "$schema": {
-      "type": "string",
-      "description": "JSON Schema reference"
-    }
-  }
+  "required": [
+    "authors",
+    "dexes"
+  ],
+  "$schema": "http://json-schema.org/draft-07/schema#"
 }

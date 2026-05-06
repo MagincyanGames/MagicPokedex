@@ -12,7 +12,7 @@
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
-    "generate-schemas": "node scripts/generate-schemas.mjs",
+    "generate-schemas": "tsx scripts/generate-schemas.ts",
     "validate": "tsx scripts/validate-authors.ts",
     "poke": "tsx scripts/cli/poke.ts"
   },
@@ -41,7 +41,7 @@
     "ts-json-schema-generator": "^2.9.0",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "typescript-json-schema": "^0.67.1",
+    "typescript-json-schema": "^0.67.2",
     "vite": "^8.0.3"
   }
 }

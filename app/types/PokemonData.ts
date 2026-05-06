@@ -1,3 +1,4 @@
+import type { SignatureHelpTriggerCharacter } from "typescript"
 import { FetchLink } from "./Link"
 
 let CACHE_EXPIRE_SECONDS = 100
@@ -35,10 +36,8 @@ export type Pokemon = {
     name: string
     dex?: string
     sprite?: string
-
-    //TODO: agregar Display Name
-    display: string
-    //TODO: Renombrado de forma base 
+    evolves?: Record<string, string>
+    display?: string
     forms?: Record<string, PokemonForm>
 }
 
