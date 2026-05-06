@@ -10,7 +10,7 @@
       "title": "base_url"
     },
     "pokemons": {
-      "$ref": "#/definitions/Record%3Cstring%2CAuthorEntry%3E",
+      "$ref": "#/definitions/Record%3Cstring%2CAuthorEntryJSON%3E",
       "title": "pokemons"
     }
   },
@@ -20,9 +20,44 @@
     "pokemons"
   ],
   "definitions": {
-    "Record<string,AuthorEntry>": {
-      "title": "Record<string,AuthorEntry>",
-      "type": "object"
+    "Record<string,AuthorEntryJSON>": {
+      "title": "Record<string,AuthorEntryJSON>",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/AuthorEntryJSON"
+      }
+    },
+    "AuthorEntryJSON": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "#/definitions/AuthorEntry"
+        }
+      ],
+      "title": "AuthorEntryJSON"
+    },
+    "AuthorEntry": {
+      "type": "object",
+      "properties": {
+        "base": {
+          "type": "string",
+          "title": "base"
+        },
+        "forms": {
+          "$ref": "#/definitions/FormsRecord",
+          "title": "forms"
+        }
+      },
+      "title": "AuthorEntry"
+    },
+    "FormsRecord": {
+      "title": "FormsRecord",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
     }
   },
   "$schema": "http://json-schema.org/draft-07/schema#"
