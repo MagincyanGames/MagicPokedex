@@ -10,8 +10,7 @@ import { BuildQuery } from "~/utiles/query"
 export default function PokemonView() {
   const params = useParams()
   const [searchParams] = useSearchParams()
-  const authorParam = searchParams.get('author')
-  const formParam = searchParams.get('form')
+  const query = { author: searchParams.get('author'), form: searchParams.get('form') }
 
   const [pokemon, setPokemon] = useState<Pokemon>()
   const [evolution, setEvolutions] = useState<[Pokemon, string][]>()
@@ -43,9 +42,7 @@ export default function PokemonView() {
         setEvolutions(Object.keys(pokemon.evolves).map(p => [Collections.getPokemon(p, col), pokemon.evolves![p]]))
       else setEvolutions([])
 
-      console.log(formParam)
-      console.log(pokemon.forms ? pokemon.forms[formParam ?? ''] : '')
-      const form = formParam && pokemon.forms ? pokemon.forms[formParam] : undefined
+      const form = query.form && pokemon.forms ? pokemon.forms[query.form] : undefined
       setForm(form)
 
       // Obtener el dex donde aparece este pokemon (solo la primera región)
@@ -59,27 +56,27 @@ export default function PokemonView() {
 
       //TODO Comprobar que el FORM exista
 
-      if (authorParam) {
-        const author = await Collections.getAuthor(authorParam, col)
+      if (query.author) {
+        const author = await Collections.getAuthor(query.author, col)
 
-        setImage(Link(Collections.getSprite(pokemon, formParam, author)))
+        setImage(Link(Collections.getSprite(pokemon, query.form, author)))
       } else {
         // Si no hay autor, mostrar dibujos de todos los autores que lo tengan
 
-        setImage(Link(Collections.getSprite(pokemon, formParam, null)))
+        setImage(Link(Collections.getSprite(pokemon, query.form, null)))
 
         const authorsWithThisPokemon = col.authors
-          .filter(author => pokemonName in author.pokemons || pokemonName + "#" + formParam in author.pokemons)
+          .filter(author => pokemonName in author.pokemons || pokemonName + "#" + query.form in author.pokemons)
           .map(author => ({
             author,
-            image: Link(Collections.getSprite(pokemon, formParam, author))
+            image: Link(Collections.getSprite(pokemon, query.form, author))
           }))
         setAuthorsWithPokemon(authorsWithThisPokemon)
       }
     }
 
     load()
-  }, [authorParam, params.pokemon, formParam])
+  }, [query.author, params.pokemon, query.form])
 
   return <div className="flex flex-col items-center justify-center min-h-screen p-4">
     <div className="flex flex-col w-full max-w-400 gap-6">
@@ -88,11 +85,11 @@ export default function PokemonView() {
           <div className="flex flex-row gap-4 w-fit justify-center">
             <Title
               title={capitalize(pokemon?.display ?? pokemon?.name ?? '')}
-              className={authorParam ? 'hover:underline hover:cursor-pointer w-fit' : 'w-fit'}
+              className={query.author ? 'hover:underline hover:cursor-pointer w-fit' : 'w-fit'}
               onClick={() => {
-                if (authorParam) {
+                if (query.author) {
                   navigate(`/pokemon/${pokemon?.name}${BuildQuery({
-                    form: formParam
+                    form: query.form
                   })}`)
                 }
               }}
@@ -100,7 +97,7 @@ export default function PokemonView() {
             {pokemon?.forms && <div className="w-fit">
               <Selector
                 nullOption="Base"
-                value={formParam}
+                value={query.form}
                 options={Object.entries(pokemon.forms).map(f => {
                   return {
                     name: f[0],
@@ -109,7 +106,7 @@ export default function PokemonView() {
                 })}
                 onChange={value => {
                   console.log(`Changing to form ${value}`)
-                  navigate(`/pokemon/${pokemon.name}${BuildQuery({ author: authorParam, form: value })}`)
+                  navigate(`/pokemon/${pokemon.name}${BuildQuery({ author: query.author, form: value })}`)
                 }} />
             </div>}
 
@@ -123,10 +120,10 @@ export default function PokemonView() {
               <p className="text-xs uppercase tracking-widest text-gray-600 font-bold">Región</p>
               <p className="text-lg font-semibold text-red-600 hover:cursor-pointer hover:underline w-fit" onClick={() => navigate(`/dex?region=${dexes[0]}`)}>{dexes[0] ? capitalize(dexes[0]) : 'Unknown'}</p>
             </div>
-            {authorParam && (
+            {query.author && (
               <div>
                 <p className="text-xs uppercase tracking-widest text-gray-600 font-bold">Artista</p>
-                <p className="text-lg font-semibold text-red-600 hover:cursor-pointer hover:underline w-fit" onClick={() => navigate(`/dex?author=${authorParam}`)}>{capitalize(authorParam)}</p>
+                <p className="text-lg font-semibold text-red-600 hover:cursor-pointer hover:underline w-fit" onClick={() => navigate(`/dex?author=${query.author}`)}>{capitalize(query.author)}</p>
               </div>
             )}
           </div>
@@ -138,7 +135,7 @@ export default function PokemonView() {
             className="mb-5"
           />
           {evolution?.map(([p, method]) => (<div className="text-black font-bold hover:cursor-pointer" onClick={() => {
-            navigate(`/pokemon/${p.name}${BuildQuery({ author: authorParam })}`)
+            navigate(`/pokemon/${p.name}${BuildQuery({ ...query })}`)
           }}>
             {p.name}
           </div>))}
@@ -156,7 +153,7 @@ export default function PokemonView() {
         ) : null}
 
         <button
-          onClick={() => navigate('/dex' + BuildQuery({ author: authorParam }))}
+          onClick={() => navigate('/dex' + BuildQuery({ ...query }))}
           className="absolute bottom-4 left-4 bg-red-600 hover:bg-red-700 text-white rounded-2xl shadow-lg transition-colors text-2xl h-10 w-10 flex items-center justify-center hover:cursor-pointer"
           aria-label="Back to Dex"
         >
@@ -164,7 +161,7 @@ export default function PokemonView() {
         </button>
       </div>
 
-      {!authorParam && authorsWithPokemon.length > 0 && (
+      {!query.author && authorsWithPokemon.length > 0 && (
         <div className="bg-red-700 p-8 rounded-2xl">
           <h2 className="text-white text-xl font-bold mb-6">Versiones de Artistas</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-8">
@@ -173,8 +170,9 @@ export default function PokemonView() {
                 key={author.name}
                 className="flex flex-col items-center gap-3 cursor-pointer"
                 onClick={() => {
-                  const url = formParam
-                    ? `/pokemon/${params.pokemon}?author=${encodeURIComponent(author.name)}&form=${encodeURIComponent(formParam)}`
+                  //TODO: Utilizar BuildQuery
+                  const url = query.form
+                    ? `/pokemon/${params.pokemon}?author=${encodeURIComponent(author.name)}&form=${encodeURIComponent(query.form)}`
                     : `/pokemon/${params.pokemon}?author=${encodeURIComponent(author.name)}`
                   navigate(url)
                 }}

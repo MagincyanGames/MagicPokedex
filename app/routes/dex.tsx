@@ -17,13 +17,15 @@ export default function Dex() {
   const [dexes, setDexes] = useState<Pokedex[]>()
 
   const [searchParams] = useSearchParams();
+  const query = {
+    name: searchParams.get("name"),
+    author: searchParams.get("author"),
+    region: searchParams.get("region"),
+  }
+
   const navigate = useNavigate();
 
-  const nameParam = searchParams.get("name");
-  const authorParam = searchParams.get("author");
-  const regionParam = searchParams.get("region");
-
-  const selectedAuthor = authors?.find(a => a.name === authorParam) || null;
+  const selectedAuthor = authors?.find(a => a.name === query.author) || null;
 
   useEffect(() => {
     async function load() {
@@ -48,9 +50,9 @@ export default function Dex() {
     )) : null
 
     setShowingPokemons(pokemons?.filter(p =>
-      (!nameParam || p.name.startsWith(nameParam) || p.display?.startsWith(nameParam)) &&
+      (!query.name || p.name.startsWith(query.name) || p.display?.startsWith(query.name)) &&
       (!unformPokemonList || unformPokemonList.has(p.name)) &&
-      (!regionParam || p.dex?.toLocaleLowerCase() === regionParam.toLocaleLowerCase())
+      (!query.region || p.dex?.toLocaleLowerCase() === query.region.toLocaleLowerCase())
     ).map(
       p => {
         let form: string | undefined = undefined
@@ -67,7 +69,7 @@ export default function Dex() {
         }
       }
     ))
-  }, [selectedAuthor, pokemons, regionParam, nameParam])
+  }, [selectedAuthor, pokemons, query.name, query.region])
 
   return (
     <main className="min-h-screen w-full">
@@ -80,8 +82,8 @@ export default function Dex() {
               centered />
             <div className="flex flex-row items-center gap-2 w-fit  rounded-3xl " >
               <input className="bg-red-800 p-3  w-100 rounded-2xl text-center"
-                value={nameParam ?? ''}
-                onChange={(ev) => navigate(`/dex${BuildQuery({ author: authorParam, region: regionParam, name: ev.target.value })}`)}
+                value={query.name ?? ''}
+                onChange={(ev) => navigate(`/dex${BuildQuery({ ...query, name: ev.target.value })}`)}
               >
               </input>
               <FiSearch strokeWidth={3} size={30} />
@@ -90,17 +92,17 @@ export default function Dex() {
               <Selector
                 title="Autor:"
                 options={authors}
-                value={authorParam}
+                value={query.author}
                 onChange={(authorP) => {
-                  navigate(`/dex${BuildQuery({ author: authorP, region: regionParam, name: nameParam })}`)
+                  navigate(`/dex${BuildQuery({ ...query, author: authorP })}`)
                 }}
               />
               <Selector
                 title="Región:"
                 options={dexes?.map(d => ({ name: d.name, display: capitalize(d.name) }))}
-                value={regionParam}
+                value={query.region}
                 onChange={(regionP) => {
-                  navigate(`/dex${BuildQuery({ author: authorParam, region: regionP })}`)
+                  navigate(`/dex${BuildQuery({ ...query, region: regionP })}`)
                 }}
               />
             </div>
@@ -116,7 +118,7 @@ export default function Dex() {
                 <div
                   key={p.pokemon.number}
                   className="flex flex-col items-center gap-2 cursor-pointer"
-                  onClick={() => navigate(`/pokemon/${p.pokemon.name}${BuildQuery({ author: authorParam, form: p.form })}`)}
+                  onClick={() => navigate(`/pokemon/${p.pokemon.name}${BuildQuery({ author: query.author, form: p.form })}`)}
                 >
                   <div
                     style={{
