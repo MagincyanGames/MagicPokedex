@@ -247,10 +247,11 @@ export function useCollection() {
       [undefined, ...Object.keys(pokemon.forms ?? {})]
         .map(form => ({ key, form, pokemon })))
       .flat()
+      .filter(({key, form, pokemon}) => pokemon.base || form)
       .map(({ key, form, pokemon }) => ({
         key,
         name: capitalize(Pokemons![key].display ?? key),
-        form,
+        form: capitalize(Pokemons![key].forms?.[form ?? '']?.name ?? ''),
         link: form ? pokemon.forms?.[form] : pokemon.base,
         author: author?.name,
         num: Pokemons![key].number

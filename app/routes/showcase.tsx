@@ -89,7 +89,7 @@ export default function showcase() {
           />}
         </div>
         <div className="flex items-center justify-center h-35 min-w-150 bg-red-600 rounded-3xl ">
-          <Title title={showingPokemon?.name ?? ''} className="text-white text-5xl hover:cursor-default" />
+          <Title title={`${showingPokemon?.name} ${showingPokemon?.form}`} className="text-white text-5xl hover:cursor-default" />
         </div>
       </div>}
     </main>
