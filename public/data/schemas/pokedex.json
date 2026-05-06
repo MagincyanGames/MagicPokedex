@@ -6,44 +6,7 @@
       "title": "name"
     },
     "pokemons": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "number": {
-            "type": "number",
-            "title": "number"
-          },
-          "name": {
-            "type": "string",
-            "title": "name"
-          },
-          "dex": {
-            "type": "string",
-            "title": "dex"
-          },
-          "sprite": {
-            "type": "string",
-            "title": "sprite"
-          },
-          "evolves": {
-            "$ref": "#/definitions/Record%3Cstring%2Cstring%3E",
-            "title": "evolves"
-          },
-          "display": {
-            "type": "string",
-            "title": "display"
-          },
-          "forms": {
-            "$ref": "#/definitions/Record%3Cstring%2CPokemonForm%3E",
-            "title": "forms"
-          }
-        },
-        "required": [
-          "name",
-          "number"
-        ]
-      },
+      "$ref": "#/definitions/Record%3Cstring%2CPokemon%3E",
       "title": "pokemons"
     }
   },
@@ -52,12 +15,8 @@
     "pokemons"
   ],
   "definitions": {
-    "Record<string,string>": {
-      "title": "Record<string,string>",
-      "type": "object"
-    },
-    "Record<string,PokemonForm>": {
-      "title": "Record<string,PokemonForm>",
+    "Record<string,Pokemon>": {
+      "title": "Record<string,Pokemon>",
       "type": "object"
     }
   },

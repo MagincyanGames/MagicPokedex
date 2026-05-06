@@ -2,26 +2,21 @@
     "$schema": "../schemas/pokedex.json",
     "name": "teselia",
     "gen": "5.0",
-    "pokemons": [
-        {
-            "number": 502,
-            "name": "dewott"
+    "pokemons": {
+        "dewott": {
+            "number": 502
         },
-        {
-            "number": 505,
-            "name": "watchog"
+        "watchog": {
+            "number": 505
         },
-        {
-            "number": 514,
-            "name": "simisear"
+        "simisear": {
+            "number": 514
         },
-        {
-            "number": 517,
-            "name": "munna"
+        "munna": {
+            "number": 517
         },
-        {
+        "unfezant": {
             "number": 521,
-            "name": "unfezant",
             "forms": {
                 "hembra": {
                     "name": "Hembra",
@@ -29,49 +24,38 @@
                 }
             }
         },
-        {
-            "number": 524,
-            "name": "roggenrola"
+        "roggenrola": {
+            "number": 524
         },
-        {
-            "number": 538,
-            "name": "throh"
+        "throh": {
+            "number": 538
         },
-        {
-            "number": 555,
-            "name": "darmanitan"
+        "darmanitan": {
+            "number": 555
         },
-        {
-            "number": 596,
-            "name": "galvantula"
+        "galvantula": {
+            "number": 596
         },
-        {
-            "number": 598,
-            "name": "ferrothorn"
+        "ferrothorn": {
+            "number": 598
         },
-        {
-            "number": 603,
-            "name": "eelektrik"
+        "eelektrik": {
+            "number": 603
         },
-        {
-            "number": 605,
-            "name": "elgyem"
+        "elgyem": {
+            "number": 605
         },
-        {
-            "number": 622,
-            "name": "golett"
+        "golett": {
+            "number": 622
         },
-        {
-            "number": 626,
-            "name": "bouffalant"
+        "bouffalant": {
+            "number": 626
         },
-        {
-            "number": 627,
-            "name": "rufflet"
+        "rufflet": {
+            "number": 627
         },
-        {
-            "number": 637,
-            "name": "volcarona"
+        "volcarona": {
+            "number": 637
         }
-    ]
+    }
 }

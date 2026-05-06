@@ -2,89 +2,69 @@
     "$schema": "../schemas/pokedex.json",
     "name": "kanto",
     "gen": "1.0",
-    "pokemons": [
-        {
+    "pokemons": {
+        "bulbasaur": {
             "number": 1,
-            "name": "bulbasaur",
             "evolves": {
                 "ivysaur": "Lvl 16"
             }
         },
-        {
-            "number": 2,
-            "name": "ivysaur"
+        "ivysaur": {
+            "number": 2
         },
-        {
-            "number": 11,
-            "name": "metapod"
+        "metapod": {
+            "number": 11
         },
-        {
-            "number": 39,
-            "name": "jigglypuff"
+        "jigglypuff": {
+            "number": 39
         },
-        {
-            "number": 43,
-            "name": "oddish"
+        "oddish": {
+            "number": 43
         },
-        {
-            "number": 47,
-            "name": "parasect"
+        "parasect": {
+            "number": 47
         },
-        {
-            "number": 55,
-            "name": "golduck"
+        "golduck": {
+            "number": 55
         },
-        {
-            "number": 57,
-            "name": "primeape"
+        "primeape": {
+            "number": 57
         },
-        {
-            "number": 61,
-            "name": "poliwhirl"
+        "poliwhirl": {
+            "number": 61
         },
-        {
-            "number": 73,
-            "name": "tentacruel"
+        "tentacruel": {
+            "number": 73
         },
-        {
-            "number": 85,
-            "name": "dodrio"
+        "dodrio": {
+            "number": 85
         },
-        {
-            "number": 86,
-            "name": "seel"
+        "seel": {
+            "number": 86
         },
-        {
-            "number": 98,
-            "name": "krabby"
+        "krabby": {
+            "number": 98
         },
-        {
-            "number": 115,
-            "name": "kangaskhan"
+        "kangaskhan": {
+            "number": 115
         },
-        {
-            "number": 121,
-            "name": "starmie"
+        "starmie": {
+            "number": 121
         },
-        {
-            "number": 131,
-            "name": "lapras"
+        "lapras": {
+            "number": 131
         },
-        {
-            "number": 134,
-            "name": "vaporeon"
+        "vaporeon": {
+            "number": 134
         },
-        {
-            "number": 135,
-            "name": "jolteon"
+        "jolteon": {
+            "number": 135
         },
-        {
-            "number": 138,
-            "name": "omanyte"
+        "omanyte": {
+            "number": 138
         },
-        {
-            "number": 146,
-            "name": "moltres"
+        "moltres": {
+            "number": 146
         }
-    ]
+    }
 }

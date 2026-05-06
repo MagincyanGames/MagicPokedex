@@ -10,7 +10,7 @@
       "title": "base_url"
     },
     "pokemons": {
-      "$ref": "#/definitions/Record%3Cstring%2CPokemonAuthorEntry%3E",
+      "$ref": "#/definitions/Record%3Cstring%2CAuthorEntry%3E",
       "title": "pokemons"
     }
   },
@@ -20,8 +20,8 @@
     "pokemons"
   ],
   "definitions": {
-    "Record<string,PokemonAuthorEntry>": {
-      "title": "Record<string,PokemonAuthorEntry>",
+    "Record<string,AuthorEntry>": {
+      "title": "Record<string,AuthorEntry>",
       "type": "object"
     }
   },

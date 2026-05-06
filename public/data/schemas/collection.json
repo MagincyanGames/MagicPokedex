@@ -4,14 +4,47 @@
     "authors": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "name"
+          },
+          "base_url": {
+            "type": "string",
+            "title": "base_url"
+          },
+          "pokemons": {
+            "$ref": "#/definitions/Record%3Cstring%2CAuthorEntry%3E",
+            "title": "pokemons"
+          }
+        },
+        "required": [
+          "base_url",
+          "name",
+          "pokemons"
+        ]
       },
       "title": "authors"
     },
     "dexes": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "name"
+          },
+          "pokemons": {
+            "$ref": "#/definitions/Record%3Cstring%2CPokemon%3E",
+            "title": "pokemons"
+          }
+        },
+        "required": [
+          "name",
+          "pokemons"
+        ]
       },
       "title": "dexes"
     }
@@ -20,5 +53,15 @@
     "authors",
     "dexes"
   ],
+  "definitions": {
+    "Record<string,AuthorEntry>": {
+      "title": "Record<string,AuthorEntry>",
+      "type": "object"
+    },
+    "Record<string,Pokemon>": {
+      "title": "Record<string,Pokemon>",
+      "type": "object"
+    }
+  },
   "$schema": "http://json-schema.org/draft-07/schema#"
 }

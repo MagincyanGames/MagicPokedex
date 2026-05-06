@@ -4,17 +4,15 @@ import { MdSearch } from "react-icons/md";
 import { useNavigate, useSearchParams } from "react-router";
 import Selector from "~/components/selector.js";
 import Title from "~/components/title";
+import { useCollection } from "~/providers/CollectionProvider";
 import { Link } from "~/types/Link.js";
-import { Collections, type Author, type Pokedex, type Pokemon, type PokemonAuthorEntryBody, type ShowingPokemon } from "~/types/PokemonData.js";
+import { type Author, type Pokedex, type Pokemon, type AuthorEntry, type ShowingPokemon } from "~/types/PokemonData.js";
 import { capitalize } from "~/utiles/format.js";
 import { BuildQuery } from "~/utiles/query.js";
 
 export default function Dex() {
-  const [pokemons, setPokemons] = useState<Pokemon[]>();
   const [showingPokemons, setShowingPokemons] = useState<ShowingPokemon[]>()
-
-  const [authors, setAuthors] = useState<Author[]>();
-  const [dexes, setDexes] = useState<Pokedex[]>()
+  const { Authors, Dexes, Pokemons, GetAuthor, GetShowingPokemon } = useCollection()
 
   const [searchParams] = useSearchParams();
   const query = {
@@ -25,38 +23,16 @@ export default function Dex() {
 
   const navigate = useNavigate();
 
-  const selectedAuthor = authors?.find(a => a.name === query.author);
-
+  const selectedAuthor = GetAuthor(query.author)
   useEffect(() => {
-    async function load() {
-      const complexCol = await Collections.getCollections()
-      setAuthors(complexCol.authors)
-      setDexes(complexCol.dexes)
-
-      setPokemons(complexCol.pokemons)
-    }
-
-    load()
-  }, []);
-
-  useEffect(() => {
-
-    if (selectedAuthor) {
-      Collections.validateList(selectedAuthor, pokemons)
-    }
-
-    //TODO: Abstraer la lógica y reutilizar 
-
-    const unformPokemonList = selectedAuthor ? new Set(Object.entries(selectedAuthor.pokemons).map(p =>
-      p[0].split('#')[0]
-    )) : null
-
-    const showing = Collections.getShowingPokemons(selectedAuthor, pokemons, {
-      name: query.name,
-      region: query.region
-    })
-    setShowingPokemons(showing)
-  }, [selectedAuthor, pokemons, query.name, query.region])
+    setShowingPokemons(
+      GetShowingPokemon(selectedAuthor, {
+        name: query.name,
+        region: query.region,
+        unique: true
+      })
+    )
+  }, [selectedAuthor, Pokemons, query.name, query.region])
 
   return (
     <main className="min-h-screen w-full">
@@ -78,7 +54,7 @@ export default function Dex() {
             <div className="flex flex-row items-center gap-8 w-fit rounded-2xl">
               <Selector
                 title="Autor:"
-                options={authors}
+                options={Authors}
                 value={query.author}
                 onChange={(authorP) => {
                   navigate(`/dex${BuildQuery({ ...query, author: authorP })}`)
@@ -86,7 +62,7 @@ export default function Dex() {
               />
               <Selector
                 title="Región:"
-                options={dexes?.map(d => ({ name: d.name, display: capitalize(d.name) }))}
+                options={Dexes?.map(d => ({ name: d.name, display: capitalize(d.name) }))}
                 value={query.region}
                 onChange={(regionP) => {
                   navigate(`/dex${BuildQuery({ ...query, region: regionP })}`)
@@ -99,13 +75,13 @@ export default function Dex() {
               backgroundColor: "#BB0000"
             }}>
             {showingPokemons?.map(p => {
-              const imageUrl = p.link
+              const imageUrl = Link(p.link ?? '')
 
               return (
                 <div
-                  key={p.pokemon.number}
+                  key={p.key}
                   className="flex flex-col items-center gap-2 cursor-pointer"
-                  onClick={() => navigate(`/pokemon/${p.pokemon.name}${BuildQuery({ author: query.author, form: p.form })}`)}
+                  onClick={() => navigate(`/pokemon/${p.key}${BuildQuery({ author: query.author, form: p.form })}`)}
                 >
                   <div
                     style={{
@@ -117,10 +93,10 @@ export default function Dex() {
                       backgroundSize: "cover",
                       backgroundPosition: "center",
                     }}
-                    title={p.pokemon.name}
+                    title={p.name}
                     className="hover:brightness-75 transition-all duration-200"
                   />
-                  <p className="text-white text-sm font-semibold text-center">{p.pokemon.display ?? p.pokemon.name}</p>
+                  <p className="text-white text-sm font-semibold text-center">{p.name}</p>
                 </div>
               );
             })}

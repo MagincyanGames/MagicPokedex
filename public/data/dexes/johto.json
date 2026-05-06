@@ -2,50 +2,39 @@
     "$schema": "../schemas/pokedex.json",
     "name": "johto",
     "gen": "2.0",
-    "pokemons": [
-        {
-            "number": 165,
-            "name": "ladyba"
+    "pokemons": {
+        "ladyba": {
+            "number": 165
         },
-        {
-            "number": 167,
-            "name": "spinarak"
+        "spinarak": {
+            "number": 167
         },
-        {
-            "number": 183,
-            "name": "marill"
+        "marill": {
+            "number": 183
         },
-        {
-            "number": 186,
-            "name": "politoed"
+        "politoed": {
+            "number": 186
         },
-        {
-            "number": 188,
-            "name": "skiploom"
+        "skiploom": {
+            "number": 188
         },
-        {
-            "number": 189,
-            "name": "jumpluff"
+        "jumpluff": {
+            "number": 189
         },
-        {
-            "number": 196,
-            "name": "espeon"
+        "espeon": {
+            "number": 196
         },
-        {
-            "number": 224,
-            "name": "octillery"
+        "octillery": {
+            "number": 224
         },
-        {
-            "number": 233,
-            "name": "porygon2"
+        "porygon2": {
+            "number": 233
         },
-        {
-            "number": 250,
-            "name": "ho-oh"
+        "ho-oh": {
+            "number": 250
         },
-        {
-            "number": 251,
-            "name": "celebi"
+        "celebi": {
+            "number": 251
         }
-    ]
+    }
 }
