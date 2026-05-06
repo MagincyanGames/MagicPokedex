@@ -10,7 +10,7 @@
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
     "generate-schemas": "tsx scripts/generate-schemas.ts",
-    "validate": "tsx scripts/validate-authors.ts",
+    "validate": "tsx scripts/validate-authors.ts"
   },
   "dependencies": {
     "@react-router/node": "7.14.0",
