@@ -19,6 +19,8 @@ export default function Title({ title, onClick, className = "", centered = false
     const colorClasses = !hasColor ? "text-gray-900" : "";
     const trackingClasses = !hasTracking ? "tracking-tight" : "";
 
+    console.log("THIS IS A TEST FOR LAZYGIT")
+
     return <h1 className={`${baseClasses} ${fontSizeClasses} ${weightClasses} ${colorClasses} ${trackingClasses} ${className}`.trim()} onClick={onClick}>
         {title}
     </h1>
