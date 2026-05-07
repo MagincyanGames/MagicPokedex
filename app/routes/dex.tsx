@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
-import { MdSearch } from "react-icons/md";
 import { useNavigate, useSearchParams } from "react-router";
 import Selector from "~/components/selector.js";
 import Title from "~/components/title";
 import { useCollection } from "~/providers/CollectionProvider";
 import { Link } from "~/types/Link.js";
-import { type Author, type Pokedex, type Pokemon, type AuthorEntry, type ShowingPokemon } from "~/types/PokemonData.js";
+import { type ShowingPokemon } from "~/types/PokemonData.js";
 import { capitalize } from "~/utiles/format.js";
 import { BuildQuery } from "~/utiles/query.js";
 
@@ -83,20 +82,19 @@ export default function Dex() {
                   className="flex flex-col items-center gap-2 cursor-pointer"
                   onClick={() => navigate(`/pokemon/${p.key}${BuildQuery({ author: query.author, form: p.form })}`)}
                 >
-                  <div
+                  <img
+                    src={imageUrl}
+                    alt={p.name}
+                    className="hover:brightness-75 transition-all duration-200 h-35 w-35"
+                    fetchPriority="high"
                     style={{
-                      height: "120px",
-                      width: "120px",
                       backgroundColor: "white",
                       borderRadius: "10px",
-                      backgroundImage: imageUrl ? `url(${imageUrl})` : undefined,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
-                    title={p.name}
-                    className="hover:brightness-75 transition-all duration-200"
-                  />
-                  <p className="text-white text-sm font-semibold text-center">{p.name}</p>
+                      objectFit: "contain",
+                      objectPosition: "center"
+                    }}>
+                  </img>
+                  <p className=" text-white text-sm font-semibold text-center">{p.name}</p>
                 </div>
               );
             })}
