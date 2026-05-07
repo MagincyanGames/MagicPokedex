@@ -68,7 +68,7 @@ export default function Dex() {
               />
             </div>
           </div>
-          <div className="mt-4 md:mt-8 w-fit flex-col gap-10 grid grid-cols-2 p-4 mx-auto rounded-2xl md:grid-cols-6 md:gap-20 md:p-8"
+          <div className="mt-4 md:mt-8 w-full  max-w-350 flex-col gap-10 grid grid-cols-2 p-4 mx-auto rounded-2xl md:grid-cols-6 md:gap-20 md:p-8"
             style={{
               backgroundColor: "#BB0000"
             }}>
@@ -78,7 +78,7 @@ export default function Dex() {
               return (
                 <div
                   key={p.key}
-                  className="flex flex-col items-center cursor-pointer w-40"
+                  className="flex flex-col items-center cursor-pointer w-full"
                   onClick={() => navigate(`/pokemon/${p.key}${BuildQuery({ author: query.author, form: p.form })}`)}
                 >
                   <img
