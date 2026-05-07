@@ -159,12 +159,12 @@ export function useCollection() {
   useEffect(() => {
     if (!collection) {
       updateCachedCollections()
-        .then(validateList)
+         .then(validateList)
     }
   }, [])
 
   useEffect(() => {
-    //TODO: Tener en cuenta el campo dex
+    // TODO: Tener en cuenta el campo dex
     if (collection) setPokemons(collection.dexes.map(dex => dex.pokemons).reduce((acc, curr) => ({
       ...acc,
       ...curr
