@@ -5,8 +5,7 @@ type DynamicImageProps = {
   alt?: string,
   className: string,
   priority?: 'high' | 'low' | 'auto',
-  style: React.CSSProperties | undefined
-
+  style?: React.CSSProperties 
 }
 
 export default function DynamicImage({ src, alt, className, priority, style }: DynamicImageProps) {
