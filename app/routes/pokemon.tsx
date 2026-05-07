@@ -70,8 +70,8 @@ export default function PokemonView() {
   return <div className="flex flex-col items-center min-h-screen p-8">
     <div className="flex flex-col w-full max-w-350 gap-8">
       <div className="flex flex-col md:flex-row items-center md:items-start gap-8 bg-white p-8 rounded-2xl border shadow-lg relative min-h-80">
-        <div className="flex-1">
-          <div className="flex flex-row gap-4 w-fit justify-center">
+        <div className="flex flex-col flex-1 items-center">
+          <div className="flex flex-row gap-4 w-fit justify-center ">
             <Title
               title={capitalize(pokemon?.display ?? pokemonName ?? '')}
               className={query.author ? 'hover:underline hover:cursor-pointer w-fit' : 'w-fit'}
