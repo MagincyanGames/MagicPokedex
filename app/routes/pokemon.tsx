@@ -100,21 +100,46 @@ export default function PokemonView() {
             </div>}
 
           </div>
-          <div className="mt-6 space-y-3">
-            <div>
-              <p className="text-xs uppercase tracking-widest text-gray-600 font-bold">Pokédex #</p>
-              <p className="text-3xl font-bold text-red-700">{pokemon?.number ?? 'Unkown'}</p>
-            </div>
-            <div>
-              <p className="text-xs uppercase tracking-widest text-gray-600 font-bold">Región</p>
-              <p className="text-lg font-semibold text-red-600 hover:cursor-pointer hover:underline w-fit" onClick={() => navigate(`/dex?region=${dex?.name}`)}>{capitalize(dex?.name ?? 'unknown')}</p>
-            </div>
-            {query.author && (
-              <div>
-                <p className="text-xs uppercase tracking-widest text-gray-600 font-bold">Artista</p>
-                <p className="text-lg font-semibold text-red-600 hover:cursor-pointer hover:underline w-fit" onClick={() => navigate(`/dex?author=${query.author}`)}>{capitalize(query.author)}</p>
-              </div>
-            )}
+          <div className="mt-6 grid grid-cols-[100px_1fr] items-baseline gap-y-4 gap-x-6 w-fit">
+
+            {/* Fila: Número */}
+            <span className="text-sm uppercase tracking-widest text-gray-500 font-black">
+              Número
+            </span>
+            <span className="text-3xl font-bold text-red-700 leading-none text-right">
+              {pokemon?.number ?? '???'}
+            </span>
+
+            {/* Fila: Región */}
+            <span className="text-sm uppercase tracking-widest text-gray-500 font-black">
+              Región
+            </span>
+            <span
+              className="text-xl font-bold text-red-600 hover:text-red-800 cursor-pointer
+              transition-colors border-b-2 border-transparent hover:border-red-600 text-right"
+              onClick={() => navigate(`/dex?region=${dex?.name}`)}
+            >
+              {capitalize(dex?.name ?? 'unknown')}
+            </span>
+
+            {author && <>
+              <span className="text-sm uppercase tracking-widest text-gray-500 font-black">
+                Autor
+              </span>
+              <span
+                className="text-xl font-bold text-red-600 hover:text-red-800 cursor-pointer
+              transition-colors border-b-2 border-transparent hover:border-red-600 text-right"
+                onClick={() => navigate(`/dex${BuildQuery({
+                  author: author.name
+                })}`)}
+              >
+                {capitalize(author?.name ?? 'unknown')}
+              </span>
+
+
+            </>}
+
+
           </div>
         </div>
 
