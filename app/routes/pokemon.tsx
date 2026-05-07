@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams, useSearchParams } from "react-router"
+import DynamicImage from "~/components/DynamicImage"
 import Selector from "~/components/selector"
 import Title from "~/components/title"
 import { useCollection } from "~/providers/CollectionProvider"
@@ -26,15 +27,8 @@ export default function PokemonView() {
   const [evolution, setEvolutions] = useState<[Pokemon, string][]>()
   const [image, setImage] = useState<string>()
   const [authorsWithPokemon, setAuthorsWithPokemon] = useState<Array<ShowingPokemon>>([])
-  const [isSmallImage, setIsSmallImage] = useState(false)
 
   const navigate = useNavigate()
-
-  const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    const img = e.currentTarget
-    console.log(img.naturalWidth)
-    setIsSmallImage(img.naturalWidth <= 250 || img.naturalHeight <= 250)
-  }
 
   useEffect(() => {
     async function load() {
@@ -137,12 +131,11 @@ export default function PokemonView() {
         </div>} */}
         {image ? (
           <div className="flex-1 flex justify-center items-center">
-            <img
-              className="h-96 w-auto object-contain border-4 border-red-600 rounded-lg"
-              style={{ imageRendering: isSmallImage ? 'pixelated' : 'auto' }}
+            <DynamicImage
+              className="h-96 w-auto object-contain border-4 border-red-600 rounded-lg bg-white"
               src={image}
               alt={pokemonName}
-              onLoad={handleImageLoad}
+              priority="high"
             />
           </div>
         ) : null}

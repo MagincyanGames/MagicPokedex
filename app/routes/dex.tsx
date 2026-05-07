@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { useNavigate, useSearchParams } from "react-router";
+import DynamicImage from "~/components/DynamicImage";
 import Selector from "~/components/selector.js";
 import Title from "~/components/title";
 import { useCollection } from "~/providers/CollectionProvider";
@@ -81,18 +82,17 @@ export default function Dex() {
                   className="flex flex-col items-center cursor-pointer w-full"
                   onClick={() => navigate(`/pokemon/${p.key}${BuildQuery({ author: query.author, form: p.form })}`)}
                 >
-                  <img
+                  <DynamicImage
                     src={imageUrl}
                     alt={p.name}
                     className="hover:brightness-75 transition-all duration-200 w-full aspect-square"
-                    fetchPriority="high"
+                    priority="high"
                     style={{
                       backgroundColor: "white",
                       borderRadius: "10px",
                       objectFit: "contain",
                       objectPosition: "center"
-                    }}>
-                  </img>
+                    }}/>
                   <p className=" text-white text-sm font-semibold text-center">{p.name}</p>
                 </div>
               );
