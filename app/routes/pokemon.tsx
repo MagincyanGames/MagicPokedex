@@ -69,8 +69,8 @@ export default function PokemonView() {
 
   return <div className="flex flex-col items-center min-h-screen p-8">
     <div className="flex flex-col w-full max-w-350 gap-8">
-      <div className="flex flex-col md:flex-row items-center md:items-start gap-8 bg-white p-8 rounded-2xl border shadow-lg relative min-h-80">
-        <div className="flex flex-col flex-1 items-center">
+      <div className="flex flex-col md:flex-row items-center md:items-start gap-8 bg-white p-4 md:p-8 rounded-2xl border shadow-lg relative min-h-80">
+        <div className="flex flex-col flex-1 items-center md:items-start p-6 gap-4">
           <div className="flex flex-row gap-4 w-fit justify-center ">
             <Title
               title={capitalize(pokemon?.display ?? pokemonName ?? '')}
@@ -155,7 +155,7 @@ export default function PokemonView() {
           </div>))}
         </div>} */}
         {image ? (
-          <div className="flex-1 flex justify-center items-center w-80 md:h-100 md:w-auto">
+          <div className="flex-1 flex justify-center items-center w-80 max-w-full md:h-100 md:w-auto">
             <DynamicImage
               className="w-full md:w-auto md:h-full object-contain border-4 border-red-600 rounded-lg bg-white"
               src={image}
@@ -165,13 +165,13 @@ export default function PokemonView() {
           </div>
         ) : null}
 
-        <button
+        {/*<button
           onClick={() => navigate('/dex' + BuildQuery({ ...query }))}
           className="absolute bottom-4 left-4 bg-red-600 hover:bg-red-700 text-white rounded-2xl shadow-lg transition-colors text-2xl h-10 w-10 flex items-center justify-center hover:cursor-pointer"
           aria-label="Back to Dex"
         >
           ←
-        </button>
+        </button>*/}
       </div>
 
       {!query.author && authorsWithPokemon.length > 0 && (
