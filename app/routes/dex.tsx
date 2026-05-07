@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { useNavigate, useSearchParams } from "react-router";
 import DynamicImage from "~/components/DynamicImage";
+import Panel from "~/components/Panel";
 import Selector from "~/components/selector.js";
 import Title from "~/components/title";
 import { useCollection } from "~/providers/CollectionProvider";
@@ -36,10 +37,9 @@ export default function Dex() {
 
   return (
     <main className="min-h-screen w-full">
-      <div className="flex flex-col min-h-[calc(100vh-3rem)] items-center gap-8 w-full">
-        <div className="p-4 w-full max-w-350 flex flex-col items-center md:mt-10">
-          <div className="flex flex-col items-center rounded-2xl p-6 gap-6 w-full"
-            style={{ backgroundColor: "#BB0000" }}>
+      <div className="flex flex-col min-h-[calc(100vh-3rem)] items-center w-full">
+        <div className="p-4 w-full max-w-350 flex flex-col items-center md:mt-10 gap-8">
+          <Panel color={"#BB0000"}>
             <Title title="MagicDex"
               className="mt-2 text-white text-4xl"
               centered />
@@ -68,36 +68,38 @@ export default function Dex() {
                 }}
               />
             </div>
-          </div>
-          <div className="mt-4 md:mt-8 w-full  max-w-350 flex-col gap-10 grid grid-cols-2 p-4 mx-auto rounded-2xl md:grid-cols-6 md:gap-20 md:p-8"
-            style={{
-              backgroundColor: "#BB0000"
-            }}>
-            {showingPokemons?.map(p => {
-              const imageUrl = Link(p.link ?? '')
+          </Panel>
+          <Panel color="#BB0000">
+            <div className="mt-4 md:mt-8 w-full  max-w-350 flex-col gap-10 grid grid-cols-2 p-4 mx-auto rounded-2xl md:grid-cols-6 md:gap-20 md:p-8"
+              style={{
+                backgroundColor: "#BB0000"
+              }}>
+              {showingPokemons?.map(p => {
+                const imageUrl = Link(p.link ?? '')
 
-              return (
-                <div
-                  key={p.key}
-                  className="flex flex-col items-center cursor-pointer w-full"
-                  onClick={() => navigate(`/pokemon/${p.key}${BuildQuery({ author: query.author, form: p.form })}`)}
-                >
-                  <DynamicImage
-                    src={imageUrl}
-                    alt={p.name}
-                    className="hover:brightness-75 transition-all duration-200 w-full aspect-square"
-                    priority="high"
-                    style={{
-                      backgroundColor: "white",
-                      borderRadius: "10px",
-                      objectFit: "contain",
-                      objectPosition: "center"
-                    }}/>
-                  <p className=" text-white text-sm font-semibold text-center">{p.name}</p>
-                </div>
-              );
-            })}
-          </div>
+                return (
+                  <div
+                    key={p.key}
+                    className="flex flex-col items-center cursor-pointer w-full"
+                    onClick={() => navigate(`/pokemon/${p.key}${BuildQuery({ author: query.author, form: p.form })}`)}
+                  >
+                    <DynamicImage
+                      src={imageUrl}
+                      alt={p.name}
+                      className="hover:brightness-75 transition-all duration-200 w-full aspect-square"
+                      priority="high"
+                      style={{
+                        backgroundColor: "white",
+                        borderRadius: "10px",
+                        objectFit: "contain",
+                        objectPosition: "center"
+                      }} />
+                    <p className=" text-white text-sm font-semibold text-center">{p.name}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </Panel>
         </div>
       </div>
     </main >

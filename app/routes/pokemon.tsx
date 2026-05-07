@@ -67,8 +67,8 @@ export default function PokemonView() {
     }
   }, [author, showingPokemon])
 
-  return <div className="flex flex-col items-center justify-center min-h-screen p-4">
-    <div className="flex flex-col w-full max-w-400 gap-6">
+  return <div className="flex flex-col items-center min-h-screen p-8">
+    <div className="flex flex-col w-full max-w-350 gap-8">
       <div className="flex flex-col md:flex-row items-center md:items-start gap-8 bg-white p-8 rounded-2xl border shadow-lg relative min-h-80">
         <div className="flex-1">
           <div className="flex flex-row gap-4 w-fit justify-center">
@@ -130,9 +130,9 @@ export default function PokemonView() {
           </div>))}
         </div>} */}
         {image ? (
-          <div className="flex-1 flex justify-center items-center">
+          <div className="flex-1 flex justify-center items-center w-80 md:h-100 md:w-auto">
             <DynamicImage
-              className="h-96 w-auto object-contain border-4 border-red-600 rounded-lg bg-white"
+              className="w-full md:w-auto md:h-full object-contain border-4 border-red-600 rounded-lg bg-white"
               src={image}
               alt={pokemonName}
               priority="high"
@@ -160,7 +160,7 @@ export default function PokemonView() {
                 onClick={() =>
                   navigate(`/pokemon/${pokemonName}${BuildQuery({ author, form: query.form })}`)
                 }>
-                <img
+                <DynamicImage
                   className="h-32 w-32 border-2 border-white rounded-lg object-cover hover:brightness-75 transition-all cursor-pointer"
                   src={Link(link ?? '')}
                   alt={`${pokemonName} by ${author}`}
