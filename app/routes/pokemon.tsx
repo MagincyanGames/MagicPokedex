@@ -165,13 +165,6 @@ export default function PokemonView() {
           </div>
         ) : null}
 
-        {/*<button
-          onClick={() => navigate('/dex' + BuildQuery({ ...query }))}
-          className="absolute bottom-4 left-4 bg-red-600 hover:bg-red-700 text-white rounded-2xl shadow-lg transition-colors text-2xl h-10 w-10 flex items-center justify-center hover:cursor-pointer"
-          aria-label="Back to Dex"
-        >
-          ←
-        </button>*/}
       </div>
 
       {!query.author && authorsWithPokemon.length > 0 && (
@@ -197,6 +190,13 @@ export default function PokemonView() {
         </div>
       )}
     </div>
+    <button
+      onClick={() => navigate(-1)}
+      className="absolute bottom-4 left-4 bg-red-600 hover:bg-red-700 text-white rounded-2xl 
+      shadow-lg transition-colors text-2xl h-10 w-10 flex items-center justify-center hover:cursor-pointer"
+      aria-label="Back to Dex">
+      ←
+    </button>
 
   </div>
 }
