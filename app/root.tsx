@@ -73,7 +73,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <CollectionProvider><Outlet /></CollectionProvider>;
+  return <CollectionProvider>
+    <Outlet />
+    <ScrollRestoration />
+  </CollectionProvider>;
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

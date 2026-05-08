@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
-import { useNavigate, useSearchParams } from "react-router";
+import { useLocation, useNavigate, useSearchParams } from "react-router";
 import DynamicImage from "~/components/DynamicImage";
 import Panel from "~/components/Panel";
 import Selector from "~/components/selector.js";
 import Title from "~/components/title";
 import { useCollection } from "~/providers/CollectionProvider";
+import { useScrollRestoration } from "~/providers/ScrollRestoration";
 import { Link } from "~/types/Link.js";
 import { type ShowingPokemon } from "~/types/PokemonData.js";
 import { capitalize } from "~/utiles/format.js";
@@ -14,6 +15,11 @@ import { BuildQuery } from "~/utiles/query.js";
 export default function Dex() {
   const [showingPokemons, setShowingPokemons] = useState<ShowingPokemon[]>()
   const { Authors, Dexes, Pokemons, GetAuthor, GetShowingPokemon } = useCollection()
+
+  const location = useLocation()
+
+  const isLoaded = showingPokemons && showingPokemons.length > 0;
+  useScrollRestoration(!!isLoaded)
 
   const [searchParams] = useSearchParams();
   const query = {
@@ -81,7 +87,14 @@ export default function Dex() {
                   <div
                     key={p.key}
                     className="flex flex-col items-center cursor-pointer w-full"
-                    onClick={() => navigate(`/pokemon/${p.key}${BuildQuery({ author: query.author, form: p.form })}`)}
+                    onClick={() => {
+                      sessionStorage.setItem(`scroll::${location.key}`, String(window.scrollY));
+                      navigate(`/pokemon/${p.key}${BuildQuery({ author: query.author, form: p.form })}`, {
+                        state: {
+                          scroll: window.scrollY
+                        }
+                      })
+                    }}
                   >
                     <DynamicImage
                       src={imageUrl}

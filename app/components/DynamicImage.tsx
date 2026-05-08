@@ -5,7 +5,7 @@ type DynamicImageProps = {
   alt?: string,
   className: string,
   priority?: 'high' | 'low' | 'auto',
-  style?: React.CSSProperties 
+  style?: React.CSSProperties
 }
 
 export default function DynamicImage({ src, alt, className, priority, style }: DynamicImageProps) {
@@ -23,6 +23,6 @@ export default function DynamicImage({ src, alt, className, priority, style }: D
     className={className}
     onLoad={handleImageLoad}
     fetchPriority={priority}
-    style={{...style, imageRendering: isSmall ? 'pixelated' : 'auto' }}
+    style={{ ...style, imageRendering: isSmall ? 'pixelated' : 'auto' }}
   />
 }
